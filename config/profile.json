@@ -1,0 +1,45 @@
+{
+  "brandName": "AI习语",
+  "positioning": "用 AI 工具提升提示效率、思维效率和语言能力。",
+  "audience": "渴望获得 AI 技术、思维提升，同时也在持续学习英文的中文读者。",
+  "selectionPrinciples": [
+    "优先选择能提升 AI 使用效率的英文一手内容。",
+    "优先选择能转化为提示词、工作流、学习方法或认知方法的文章。",
+    "优先选择能连接 AI 工具与语言学习、英文输入、翻译、写作、表达训练的内容。",
+    "降权纯融资、纯公司新闻、纯跑分、缺少读者可操作价值的内容。"
+  ],
+  "positiveKeywords": [
+    "prompt",
+    "prompting",
+    "agent",
+    "workflow",
+    "automation",
+    "AI tool",
+    "ChatGPT",
+    "Claude",
+    "Gemini",
+    "NotebookLM",
+    "Perplexity",
+    "translation",
+    "language learning",
+    "English learning",
+    "writing",
+    "speaking",
+    "vocabulary",
+    "research",
+    "reasoning",
+    "thinking",
+    "learning science",
+    "second language"
+  ],
+  "negativeKeywords": [
+    "funding",
+    "fundraise",
+    "valuation",
+    "lawsuit",
+    "stock",
+    "earnings",
+    "benchmark only"
+  ]
+}
+
