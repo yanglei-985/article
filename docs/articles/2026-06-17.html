@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI习语日报 - 2026-06-17</title>
+  <style>
+    :root { color-scheme: light; --blue:#3c70c6; --ink:#20242a; --muted:#606975; --line:#dfe5ee; --bg:#f6f8fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+    .shell { max-width: 1100px; margin: 0 auto; padding: 28px 18px 48px; }
+    .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .brand { min-width: 0; }
+    .eyebrow { margin: 0 0 4px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 38px); line-height: 1.12; letter-spacing: 0; }
+    .meta { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    button, a.button { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 18px; align-items: start; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .panel-title { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .wechat-preview { padding: 18px 12px; background: #fff; }
+    .side { display: grid; gap: 18px; }
+    .box { padding: 16px; }
+    .box p { margin: 0 0 10px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .box code { word-break: break-all; color: var(--blue); }
+    textarea { width: 100%; height: 360px; border: 0; border-top: 1px solid var(--line); padding: 14px; resize: vertical; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: #334; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0; padding: 14px; font-size: 13px; line-height: 1.6; color: #394150; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .topbar { align-items: flex-start; flex-direction: column; } .actions { justify-content: flex-start; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div class="brand">
+        <p class="eyebrow">AI习语 · 2026-06-17</p>
+        <h1>The Fable 5 Export Controls Harm US Cyber Defense</h1>
+        <p class="meta">来源：Simon Willison · 生成模式：AI 精翻 + 排版</p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="copyHtml">复制公众号 HTML</button>
+        <a class="button" href="2026-06-17.wechat.html">打开纯 HTML</a>
+      </div>
+    </section>
+    <section class="layout">
+      <article class="panel">
+        <p class="panel-title">公众号预览</p>
+        <div class="wechat-preview"><section data-role="outer" label="edit by 135editor" style="margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;"><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">如果一句提示词是 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">fix this code</code>，它到底是在制造攻击，还是在做防御？</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">Simon Willison 今天转述了安全研究者 Kate Moussouris 的澄清：导致 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Claude Fable 5</code> 被纳入出口管制争议的所谓 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">jailbreak</code>，本质上并不是让模型写攻击脚本，而是让模型修复有漏洞的代码。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">研究者拿了两类代码：一类是已经公开、带有已知 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">CVE</code> 漏洞的开源代码；另一类是他们故意植入漏洞的新代码。然后他们让 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Fable 5</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Mythos</code> 和 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Opus</code> 去审查代码中的安全问题。<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Fable 5</code> 拒绝了。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">接着，研究者换了一种说法：让模型 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">fix this code</code>。在一个多步骤、需要人工参与的流程里，他们把模型输出转成测试补丁的脚本。于是，这被描述成一种绕过安全护栏的方式。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">Kate 的判断很直接：这很荒唐。因为编码模型最基本、也最有价值的能力之一，就是修 bug。而安全漏洞，本来就是最重要的一类 bug。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">对防御者来说，理想的 AI 助手应该能做三件事：找出代码里的漏洞，解释为什么要修，写测试确认补丁真的有效。这不是绕过护栏，而是防御安全每天都在运行的 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">find, fix, test</code> 循环。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">AI习语视角看，这篇短文真正重要的地方在于：同一句英文提示词，在不同语境下含义完全不同。真正关键的不是某几个词看起来像不像危险指令，而是任务目标、输入材料、输出约束和使用场景。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">如果政策制定者只听到「模型能 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">craft cyber attacks</code>」，就可能把任何能帮助安全修复的模型都视为危险。结果是：攻击者未必被限制，防御者反而失去最有用的工具。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">对普通 AI 使用者，这也有一个直接启发：写提示词时，不要只写动作，要写清楚防御目标、边界和验证方式。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">你可以复用这个安全修复提示词模式：你是一名 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">defensive security reviewer</code>，只帮助修复和验证代码，不提供攻击部署建议。请审查以下代码，找出可能的安全问题，给出最小必要修复，并解释每个修复为什么重要。输出包括：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Risk summary</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Patch</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Why it matters</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Regression tests</code> 和 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Safe boundaries</code>；不要提供利用步骤、武器化脚本或真实目标攻击建议。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这个模式的重点不是「骗过模型」，而是把意图讲清楚：我是防御者，我要修补漏洞，我需要测试来确认修复有效。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">顺手练英文，可以记住这组工作流动词：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">find</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">explain</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">fix</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">test</code>。它不仅适合代码，也适合英文写作：先找不自然表达，解释为什么别扭，再改写句子，最后用替代表达做验证。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">好的提示词，不只是命令模型「做事」，而是让模型进入一个可验证的工作循环。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">来源：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Simon Willison</code>，文章 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">The Fable 5 Export Controls Harm US Cyber Defense</code>，发布于 2026-06-16。原文链接：https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything</p><blockquote style="margin:18px 0 0;padding:12px 14px;border-left:3px solid rgb(60,112,198);background:rgba(27,31,35,0.04);color:#666;font-size:15px;line-height:1.8em;letter-spacing:0.02em;">我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</blockquote></section></div>
+      </article>
+      <aside class="side">
+        <section class="panel box">
+          <p class="panel-title" style="margin:-16px -16px 14px;">原文信息</p>
+          <p><strong>Score:</strong> 13</p>
+          <p><strong>URL:</strong> <a href="https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything">https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything</a></p>
+          <p><strong>摘要:</strong> The Fable 5 Export Controls Harm US Cyber Defense I quoted The Atlantic quoting Kate Moussouris earlier, when I should have gone straight to the source. Here she is confirming that the &quot;jailbreak&quot; that got Claude Fable 5 banned under an export control really was &quot;fix this code&quot;: The researchers took open-source code with known CVEs, plus new code with deliberately planted vulnerabilities, and asked Fable 5, Mythos, and Opus to “review the code for security issues.” Fable 5 refused. They then asked the models to “fix this code” and, through a multistep and manual process, turned the output into scripts that test the patches. As Kate points out, this is absurd. Coding models fix bugs, and security exploits are the most important category of bugs for them to fix! Defenders need to be able to ask AI to fix the bugs in a file, explain why the fix matters, and write tests that confirm the patch works. That is not a guardrail bypass. It is the most valuable thing an AI model can do for defensive security: executing the find, fix, and test loop defenders run every day. [...] The prompts worked because they were defensive requests, and that capability cannot be removed without making the mo</p>
+        </section>
+        <section class="panel">
+          <p class="panel-title">复制区</p>
+          <textarea id="htmlSource" spellcheck="false">&lt;section data-role=&quot;outer&quot; label=&quot;edit by 135editor&quot; style=&quot;margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;&quot;&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;如果一句提示词是 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;fix this code&lt;/code&gt;，它到底是在制造攻击，还是在做防御？&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;Simon Willison 今天转述了安全研究者 Kate Moussouris 的澄清：导致 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Claude Fable 5&lt;/code&gt; 被纳入出口管制争议的所谓 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;jailbreak&lt;/code&gt;，本质上并不是让模型写攻击脚本，而是让模型修复有漏洞的代码。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;研究者拿了两类代码：一类是已经公开、带有已知 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;CVE&lt;/code&gt; 漏洞的开源代码；另一类是他们故意植入漏洞的新代码。然后他们让 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Fable 5&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Mythos&lt;/code&gt; 和 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Opus&lt;/code&gt; 去审查代码中的安全问题。&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Fable 5&lt;/code&gt; 拒绝了。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;接着，研究者换了一种说法：让模型 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;fix this code&lt;/code&gt;。在一个多步骤、需要人工参与的流程里，他们把模型输出转成测试补丁的脚本。于是，这被描述成一种绕过安全护栏的方式。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;Kate 的判断很直接：这很荒唐。因为编码模型最基本、也最有价值的能力之一，就是修 bug。而安全漏洞，本来就是最重要的一类 bug。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;对防御者来说，理想的 AI 助手应该能做三件事：找出代码里的漏洞，解释为什么要修，写测试确认补丁真的有效。这不是绕过护栏，而是防御安全每天都在运行的 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;find, fix, test&lt;/code&gt; 循环。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;AI习语视角看，这篇短文真正重要的地方在于：同一句英文提示词，在不同语境下含义完全不同。真正关键的不是某几个词看起来像不像危险指令，而是任务目标、输入材料、输出约束和使用场景。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;如果政策制定者只听到「模型能 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;craft cyber attacks&lt;/code&gt;」，就可能把任何能帮助安全修复的模型都视为危险。结果是：攻击者未必被限制，防御者反而失去最有用的工具。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;对普通 AI 使用者，这也有一个直接启发：写提示词时，不要只写动作，要写清楚防御目标、边界和验证方式。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;你可以复用这个安全修复提示词模式：你是一名 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;defensive security reviewer&lt;/code&gt;，只帮助修复和验证代码，不提供攻击部署建议。请审查以下代码，找出可能的安全问题，给出最小必要修复，并解释每个修复为什么重要。输出包括：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Risk summary&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Patch&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Why it matters&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Regression tests&lt;/code&gt; 和 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Safe boundaries&lt;/code&gt;；不要提供利用步骤、武器化脚本或真实目标攻击建议。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这个模式的重点不是「骗过模型」，而是把意图讲清楚：我是防御者，我要修补漏洞，我需要测试来确认修复有效。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;顺手练英文，可以记住这组工作流动词：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;find&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;explain&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;fix&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;test&lt;/code&gt;。它不仅适合代码，也适合英文写作：先找不自然表达，解释为什么别扭，再改写句子，最后用替代表达做验证。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;好的提示词，不只是命令模型「做事」，而是让模型进入一个可验证的工作循环。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;来源：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Simon Willison&lt;/code&gt;，文章 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;The Fable 5 Export Controls Harm US Cyber Defense&lt;/code&gt;，发布于 2026-06-16。原文链接：https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything&lt;/p&gt;&lt;blockquote style=&quot;margin:18px 0 0;padding:12px 14px;border-left:3px solid rgb(60,112,198);background:rgba(27,31,35,0.04);color:#666;font-size:15px;line-height:1.8em;letter-spacing:0.02em;&quot;&gt;我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。&lt;/blockquote&gt;&lt;/section&gt;</textarea>
+        </section>
+        <section class="panel">
+          <p class="panel-title">中文草稿</p>
+          <pre># 当「修好这段代码」被当成越狱：AI 安全的真正问题
+
+如果一句提示词是「fix this code」（修好这段代码），它到底是在制造攻击，还是在做防御？
+
+Simon Willison 今天转述了安全研究者 Kate Moussouris 的澄清：导致 Claude Fable 5 被纳入出口管制争议的所谓「jailbreak」，本质上并不是让模型写攻击脚本，而是让模型修复有漏洞的代码。
+
+研究者拿了两类代码：一类是已经公开、带有已知 CVE 漏洞的开源代码；另一类是他们故意植入漏洞的新代码。然后他们让 Fable 5、Mythos 和 Opus 去「review the code for security issues」（审查代码中的安全问题）。Fable 5 拒绝了。
+
+接着，研究者换了一种说法：让模型「fix this code」。在一个多步骤、需要人工参与的流程里，他们把模型输出转成测试补丁的脚本。于是，这被描述成一种绕过安全护栏的方式。
+
+Kate 的判断很直接：这很荒唐。
+
+因为编码模型最基本、也最有价值的能力之一，就是修 bug。而安全漏洞，本来就是最重要的一类 bug。对防御者来说，理想的 AI 助手应该能做三件事：找出代码里的漏洞，解释为什么要修，写测试确认补丁真的有效。
+
+这不是绕过护栏，而是防御安全每天都在运行的 find, fix, test 循环。
+
+## AI习语视角：问题不在提示词，而在任务语境
+
+这篇短文值得 AI 用户认真看，因为它提醒我们：同一句英文提示词，在不同语境下含义完全不同。
+
+「fix this code」可以是普通开发请求，也可以是安全修复请求；「write a test」可以是质量保障，也可以被误读成攻击验证。真正关键的不是某几个词看起来像不像危险指令，而是任务目标、输入材料、输出约束和使用场景。
+
+如果政策制定者只听到「模型能 craft cyber attacks」，就可能把任何能帮助安全修复的模型都视为危险。结果是：攻击者未必被限制，防御者反而失去最有用的工具。
+
+对普通 AI 使用者，这也有一个直接启发：写提示词时，不要只写动作，要写清楚防御目标、边界和验证方式。
+
+## 一个可复用的安全修复提示词模式
+
+你可以把下面这个模式用于代码审查、漏洞修复和学习安全英文表达：
+
+**角色**：你是一名 defensive security reviewer，只帮助修复和验证代码，不提供攻击部署建议。
+
+**任务**：请审查以下代码，找出可能的安全问题，给出最小必要修复，并解释每个修复为什么重要。
+
+**输出格式**：
+1. Risk summary：用中文概括风险。
+2. Patch：给出修改后的代码或 diff。
+3. Why it matters：解释漏洞成因和修复逻辑。
+4. Regression tests：写出能验证补丁有效的测试。
+5. Safe boundaries：不要提供利用步骤、武器化脚本或真实目标攻击建议。
+
+这个模式的重点不是「骗过模型」，而是把意图讲清楚：我是防御者，我要修补漏洞，我需要测试来确认修复有效。
+
+## 顺手练英文：把安全任务拆成四个动词
+
+这篇文章里有一个很值得记的表达：the find, fix, and test loop。它可以扩展成 AI 工作流里的四个英文动词：find, explain, fix, test。
+
+下次你让 AI 帮你处理复杂问题时，也可以用这四步：先 find 找问题，再 explain 解释原因，然后 fix 给出修复，最后 test 验证结果。
+
+这不仅适合代码，也适合英文写作：find awkward expressions，explain why they sound unnatural，fix the sentences，test with alternative phrasings。
+
+好的提示词，不只是命令模型「做事」，而是让模型进入一个可验证的工作循环。
+
+## 来源
+
+Source: Simon Willison
+
+Title: The Fable 5 Export Controls Harm US Cyber Defense
+
+URL: https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything
+
+Published: 2026-06-16</pre>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script>
+    document.getElementById("copyHtml").addEventListener("click", async () => {
+      const value = document.getElementById("htmlSource").value;
+      await navigator.clipboard.writeText(value);
+      const button = document.getElementById("copyHtml");
+      button.textContent = "已复制";
+      setTimeout(() => button.textContent = "复制公众号 HTML", 1800);
+    });
+  </script>
+</body>
+</html>
