@@ -12,6 +12,7 @@ const articlePagePath = path.join(docsDir, "articles", `${today}.html`);
 const snippetPagePath = path.join(docsDir, "articles", `${today}.wechat.html`);
 
 const profile = await readJson("config/profile.json");
+const sources = await readJson("config/sources.json");
 const sampleArticles = await readJson("data/sample-articles.json");
 const baoyuPrompt = await readText("prompts/baoyu-refined.md");
 const stylePrompt = await readText("prompts/ai-gap-style.md");
@@ -61,6 +62,12 @@ console.log(`Mode: ${generationMode}`);
 
 async function loadCandidates() {
   if (!process.env.SOURCE_API_URL) {
+    const rssArticles = await loadRssCandidates(sources);
+    if (rssArticles.length) {
+      return rssArticles;
+    }
+
+    console.warn("No RSS candidates loaded; using sample articles.");
     return normalizeArticles(sampleArticles);
   }
 
@@ -82,6 +89,108 @@ async function loadCandidates() {
     throw new Error(`API returned non-JSON content: ${raw.slice(0, 80).replace(/\s+/g, " ")}`);
   }
   return normalizeArticles(payload);
+}
+
+async function loadRssCandidates(sourceConfig) {
+  const feeds = sourceConfig.rss || [];
+  const settled = await Promise.allSettled(feeds.map((feed) => loadFeed(feed)));
+  const articles = [];
+
+  for (const result of settled) {
+    if (result.status === "fulfilled") {
+      articles.push(...result.value);
+    } else {
+      console.warn(`RSS feed failed: ${result.reason.message}`);
+    }
+  }
+
+  return articles;
+}
+
+async function loadFeed(feed) {
+  const response = await fetch(feed.url, {
+    headers: {
+      Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+      "User-Agent": "AI-Xiyu-Article-Bot/1.0"
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`${feed.name} ${response.status} ${response.statusText}`);
+  }
+
+  const xml = await response.text();
+  const parsed = parseFeedXml(xml, feed);
+  return parsed.slice(0, feed.limit || 2);
+}
+
+function parseFeedXml(xml, feed) {
+  const itemMatches = [...xml.matchAll(/<item\b[\s\S]*?<\/item>/gi)].map((match) => match[0]);
+  const entryMatches = [...xml.matchAll(/<entry\b[\s\S]*?<\/entry>/gi)].map((match) => match[0]);
+  const blocks = itemMatches.length ? itemMatches : entryMatches;
+
+  return blocks
+    .map((block) => {
+      const title = decodeXml(getTag(block, "title"));
+      const link = decodeXml(getRssLink(block) || getAtomLink(block));
+      const summary = decodeXml(
+        getTag(block, "description") ||
+          getTag(block, "summary") ||
+          getTag(block, "content") ||
+          getTag(block, "content:encoded")
+      );
+      const publishedAt = decodeXml(getTag(block, "pubDate") || getTag(block, "published") || getTag(block, "updated"));
+      const categories = [...block.matchAll(/<category\b[^>]*>([\s\S]*?)<\/category>/gi)].map((match) => decodeXml(stripTags(match[1])));
+
+      return {
+        title: title || "Untitled RSS item",
+        url: link,
+        source: feed.name,
+        publishedAt,
+        summary: stripTags(summary).slice(0, 1200),
+        content: stripTags(summary).slice(0, 4000),
+        tags: categories
+      };
+    })
+    .filter((article) => article.title && (article.content || article.summary));
+}
+
+function getTag(block, tagName) {
+  const escaped = tagName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = block.match(new RegExp(`<${escaped}\\b[^>]*>([\\s\\S]*?)<\\/${escaped}>`, "i"));
+  return match ? stripCdata(match[1].trim()) : "";
+}
+
+function getRssLink(block) {
+  return getTag(block, "link");
+}
+
+function getAtomLink(block) {
+  const href = block.match(/<link\b[^>]*href=["']([^"']+)["'][^>]*>/i);
+  return href ? href[1] : "";
+}
+
+function stripCdata(value) {
+  return value.replace(/^<!\[CDATA\[/, "").replace(/\]\]>$/, "");
+}
+
+function stripTags(value) {
+  return String(value || "")
+    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function decodeXml(value) {
+  return stripCdata(String(value || ""))
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x2F;/g, "/");
 }
 
 function normalizeArticles(payload) {
@@ -126,49 +235,80 @@ function scoreArticle(article, profileConfig) {
   const negative = profileConfig.negativeKeywords.reduce((sum, keyword) => {
     return sum + (haystack.includes(keyword.toLowerCase()) ? 2 : 0);
   }, 0);
-  const lengthBonus = article.content.length > 400 ? 2 : 0;
+  const languageBonus = /english|language|writing|prompt|workflow|agent|chatgpt|claude|openai|anthropic|translation/i.test(haystack)
+    ? 4
+    : 0;
+  const lengthBonus = article.content.length > 300 ? 2 : 0;
   const sourceBonus = article.url ? 1 : 0;
-  return positive + lengthBonus + sourceBonus - negative;
+  return positive + languageBonus + lengthBonus + sourceBonus - negative;
 }
 
 async function generateWithModel(article, profileConfig, translateRules, htmlRules) {
   const baseUrl = (process.env.OPENAI_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
   const model = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+  const endpoints = buildChatCompletionEndpoints(baseUrl);
+  const requestBody = {
+    model,
+    temperature: 0.4,
+    response_format: { type: "json_object" },
+    messages: [
+      {
+        role: "system",
+        content: "You create accurate Chinese public-account drafts and WeChat-compatible HTML snippets. Return valid JSON only."
+      },
+      {
+        role: "user",
+        content: buildModelPrompt(article, profileConfig, translateRules, htmlRules)
+      }
+    ]
+  };
 
-  const response = await fetch(`${baseUrl}/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0.4,
-      messages: [
-        {
-          role: "system",
-          content: "You create accurate Chinese public-account drafts and WeChat-compatible HTML snippets. Return valid JSON only."
-        },
-        {
-          role: "user",
-          content: buildModelPrompt(article, profileConfig, translateRules, htmlRules)
-        }
-      ]
-    })
-  });
+  let lastError = "";
+  for (const endpoint of endpoints) {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify(requestBody)
+    });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`OpenAI-compatible API failed: ${response.status} ${errorText}`);
+    const raw = await response.text();
+    if (!response.ok) {
+      lastError = `${endpoint} -> ${response.status} ${raw.slice(0, 160).replace(/\s+/g, " ")}`;
+      continue;
+    }
+
+    let payload;
+    try {
+      payload = JSON.parse(raw);
+    } catch {
+      lastError = `${endpoint} -> non-JSON content: ${raw.slice(0, 120).replace(/\s+/g, " ")}`;
+      continue;
+    }
+
+    const text = payload.choices?.[0]?.message?.content || "";
+    const parsed = parseJsonObject(text);
+    return {
+      draft: parsed.draft || "",
+      html: parsed.html || ""
+    };
   }
 
-  const payload = await response.json();
-  const text = payload.choices?.[0]?.message?.content || "";
-  const parsed = parseJsonObject(text);
-  return {
-    draft: parsed.draft || "",
-    html: parsed.html || ""
-  };
+  throw new Error(`OpenAI-compatible API failed. Last error: ${lastError}`);
+}
+
+function buildChatCompletionEndpoints(baseUrl) {
+  if (baseUrl.endsWith("/chat/completions")) {
+    return [baseUrl];
+  }
+
+  if (baseUrl.endsWith("/v1")) {
+    return [`${baseUrl}/chat/completions`];
+  }
+
+  return [`${baseUrl}/v1/chat/completions`, `${baseUrl}/chat/completions`];
 }
 
 function buildModelPrompt(article, profileConfig, translateRules, htmlRules) {
