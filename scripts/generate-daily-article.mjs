@@ -23,9 +23,20 @@ const candidates = await loadCandidates();
 const selected = selectArticle(candidates, profile);
 const hasModel = Boolean(process.env.OPENAI_API_KEY);
 
-const generated = hasModel
-  ? await generateWithModel(selected, profile, baoyuPrompt, stylePrompt)
-  : generateFallback(selected, profile);
+let generated;
+let generationMode = hasModel ? "model" : "fallback";
+
+if (hasModel) {
+  try {
+    generated = await generateWithModel(selected, profile, baoyuPrompt, stylePrompt);
+  } catch (error) {
+    generationMode = "fallback";
+    console.warn(`Model generation failed, using fallback output: ${error.message}`);
+    generated = generateFallback(selected, profile);
+  }
+} else {
+  generated = generateFallback(selected, profile);
+}
 
 const snippet = ensureWechatSnippet(generated.html, selected);
 const preview = buildPreviewPage({
@@ -33,7 +44,7 @@ const preview = buildPreviewPage({
   source: selected,
   draft: generated.draft,
   snippet,
-  mode: hasModel ? "model" : "fallback"
+  mode: generationMode
 });
 
 await fs.writeFile(path.join(runDir, "source.json"), `${JSON.stringify(selected, null, 2)}\n`, "utf8");
@@ -46,7 +57,7 @@ await fs.writeFile(path.join(docsDir, "latest.html"), buildRedirect(`articles/${
 
 console.log(`Generated ${path.relative(root, articlePagePath)}`);
 console.log(`Selected: ${selected.title}`);
-console.log(`Mode: ${hasModel ? "model" : "fallback"}`);
+console.log(`Mode: ${generationMode}`);
 
 async function loadCandidates() {
   if (!process.env.SOURCE_API_URL) {
@@ -63,7 +74,13 @@ async function loadCandidates() {
     throw new Error(`Source API failed: ${response.status} ${response.statusText}`);
   }
 
-  const payload = await response.json();
+  const raw = await response.text();
+  let payload;
+  try {
+    payload = JSON.parse(raw);
+  } catch {
+    throw new Error(`API returned non-JSON content: ${raw.slice(0, 80).replace(/\s+/g, " ")}`);
+  }
   return normalizeArticles(payload);
 }
 
