@@ -1,0 +1,28 @@
+{
+  "rss": [
+    { "name": "BestBlogs AI Featured", "url": "https://www.bestblogs.dev/zh/feeds/rss?category=ai&featured=y&timeFilter=1w&minScore=70", "limit": 3 },
+    { "name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "limit": 4 },
+    { "name": "Hugging Face Daily Papers", "url": "https://jamesg.blog/hf-papers.xml", "limit": 3 },
+    { "name": "The Batch (DeepLearning.AI)", "url": "https://www.deeplearning.ai/the-batch/rss/", "limit": 2 },
+    { "name": "Import AI (Jack Clark)", "url": "https://jack-clark.net/feed/", "limit": 2 },
+    { "name": "Ahead of AI (Sebastian Raschka)", "url": "https://magazine.sebastianraschka.com/feed", "limit": 2 },
+    { "name": "TLDR AI", "url": "https://tldr.tech/api/rss/ai", "limit": 2 },
+    { "name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "limit": 2 },
+    { "name": "Latent Space", "url": "https://www.latent.space/feed", "limit": 2 },
+    { "name": "MIT Technology Review - AI", "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed", "limit": 2 },
+    { "name": "Andrej Karpathy", "url": "https://karpathy.github.io/feed.xml", "limit": 2 },
+    { "name": "Lex Fridman Podcast", "url": "https://lexfridman.com/feed/podcast/", "limit": 1 },
+    { "name": "Anthropic Blog", "url": "https://www.anthropic.com/news/rss.xml", "limit": 2 },
+    { "name": "OpenAI Blog", "url": "https://openai.com/blog/rss.xml", "limit": 2 },
+    { "name": "Martin Fowler", "url": "https://martinfowler.com/feed.atom", "limit": 2 },
+    { "name": "Julia Evans", "url": "https://jvns.ca/atom.xml", "limit": 2 },
+    { "name": "Coding Horror", "url": "https://blog.codinghorror.com/rss/", "limit": 1 },
+    { "name": "The Pragmatic Engineer", "url": "https://newsletter.pragmaticengineer.com/feed", "limit": 2 },
+    { "name": "ByteByteGo", "url": "https://blog.bytebytego.com/feed", "limit": 2 },
+    { "name": "GitHub Trending Daily", "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml", "limit": 1 },
+    { "name": "Paul Graham", "url": "http://www.aaronsw.com/2002/feeds/pgessays.rss", "limit": 2 },
+    { "name": "Patrick McKenzie - Bits about Money", "url": "https://www.bitsaboutmoney.com/archive/rss/", "limit": 1 }
+  ],
+  "api": []
+}
+
