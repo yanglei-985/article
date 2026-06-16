@@ -1,0 +1,14 @@
+{
+  "name": "article",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-daily-article.mjs",
+    "check": "node scripts/check-output.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+
