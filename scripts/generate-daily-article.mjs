@@ -4,6 +4,7 @@ import path from "node:path";
 const root = process.cwd();
 const docsDir = path.join(root, "docs");
 const outputsDir = path.join(root, "outputs");
+const CODE_STYLE = "color:#fff;font-size:14px;line-height:1.8em;background:rgb(60,112,198);padding:2px 6px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;font-weight:600;display:inline-block;";
 
 const today = getDateStamp();
 const runDir = path.join(outputsDir, today);
@@ -235,7 +236,7 @@ function generateFallback(article, profileConfig) {
 function ensureWechatSnippet(html, article) {
   const trimmed = String(html || "").trim();
   if (trimmed.includes("data-role=\"outer\"") && trimmed.includes("</section>")) {
-    return minifySnippet(trimmed);
+    return minifySnippet(styleCodeLabels(trimmed));
   }
 
   return makeSnippet([
@@ -251,7 +252,14 @@ function makeSnippet(paragraphs) {
     .map((paragraph, index) => `<p style="${pStyle}">${paragraph}</p>${index === 1 || index === 3 ? divider : ""}`)
     .join("");
   const bio = '<blockquote style="margin:20px 0;padding:10px 10px 10px 20px;background:#efefef;border:none;display:block;overflow:auto;box-sizing:border-box;"><p style="text-align:left;text-indent:0;padding:20px 0 8px;color:#595959;font-size:14px;line-height:1.8em;font-weight:normal;margin:0;">我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。</p><p style="text-align:left;text-indent:0;padding:20px 0 8px;color:#595959;font-size:14px;line-height:1.8em;font-weight:normal;margin:0;">关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</p></blockquote>';
-  return minifySnippet(`<section data-role="outer" label="edit by 135editor" style="margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;">${body}${divider}${bio}</section>`);
+  return minifySnippet(styleCodeLabels(`<section data-role="outer" label="edit by 135editor" style="margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;">${body}${divider}${bio}</section>`));
+}
+
+function styleCodeLabels(html) {
+  return html.replace(/<code\b([^>]*)>/gi, (_match, attrs = "") => {
+    const cleanedAttrs = attrs.replace(/\sstyle=(?:"[^"]*"|'[^']*')/i, "").trim();
+    return `<code style="${CODE_STYLE}"${cleanedAttrs ? ` ${cleanedAttrs}` : ""}>`;
+  });
 }
 
 function buildPreviewPage({ date, source, draft, snippet, mode }) {
