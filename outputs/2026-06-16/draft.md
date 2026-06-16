@@ -1,4 +1,4 @@
-# How to Use AI as a Thinking Partner Instead of a Shortcut
+# Fragments: June  2
 
 今天这篇内容适合「AI习语」的原因很直接：它不是让我们把 AI 当成答案机器，而是把 AI 当成一个能陪你拆问题、改提示词、练英文表达的思考伙伴。
 
@@ -10,5 +10,5 @@
 
 这就是 AI习语 想做的事：每天用一篇英文世界的一手内容，同时训练 AI 使用能力、英文输入能力和思考能力。
 
-来源：Sample Source
-链接：https://example.com/ai-thinking-partner
+来源：Martin Fowler
+链接：https://martinfowler.com/fragments/2026-06-02.html
