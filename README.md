@@ -14,7 +14,7 @@ Every run creates:
 ## Daily Flow
 
 ```text
-Source API / sample article
+RSS sources / Source API
 → score and select one article for AI习语
 → refined translation and rewrite
 → AI信息Gap-style WeChat HTML
@@ -32,7 +32,7 @@ Optional:
 
 - `OPENAI_BASE_URL`: defaults to `https://api.openai.com/v1`
 - `OPENAI_MODEL`: defaults to `gpt-4.1-mini`
-- `SOURCE_API_URL`: an endpoint returning one article or a list of candidate articles
+- `SOURCE_API_URL`: an endpoint returning one article or a list of candidate articles. If omitted, the generator reads RSS feeds from `config/sources.json`.
 - `SOURCE_API_KEY`: sent as `Authorization: Bearer ...` when present
 
 The source endpoint may return either:
@@ -63,4 +63,3 @@ npm run check
 ```
 
 Open `docs/index.html` after generation.
-
