@@ -4,7 +4,7 @@ import path from "node:path";
 const root = process.cwd();
 const docsDir = path.join(root, "docs");
 const outputsDir = path.join(root, "outputs");
-const CODE_STYLE = "color:#fff;font-size:14px;line-height:1.8em;background:rgb(60,112,198);padding:2px 6px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;font-weight:600;display:inline-block;";
+const CODE_STYLE = "color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;";
 
 const today = getDateStamp();
 const runDir = path.join(outputsDir, today);
