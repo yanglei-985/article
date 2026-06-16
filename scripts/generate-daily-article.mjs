@@ -25,18 +25,14 @@ const selected = selectArticle(candidates, profile);
 const hasModel = Boolean(process.env.OPENAI_API_KEY);
 
 let generated;
-let generationMode = hasModel ? "model" : "fallback";
+let generationMode = "model";
 
-if (hasModel) {
-  try {
-    generated = await generateWithModel(selected, profile, baoyuPrompt, stylePrompt);
-  } catch (error) {
-    generationMode = "fallback";
-    console.warn(`Model generation failed, using fallback output: ${error.message}`);
-    generated = generateFallback(selected, profile);
-  }
-} else {
+if (!hasModel) {
+  generationMode = "fallback";
+  console.warn("OPENAI_API_KEY is not set; using local fallback output.");
   generated = generateFallback(selected, profile);
+} else {
+  generated = await generateWithModel(selected, profile, baoyuPrompt, stylePrompt);
 }
 
 const snippet = ensureWechatSnippet(generated.html, selected);
