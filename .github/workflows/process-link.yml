@@ -1,9 +1,25 @@
 name: Process Submitted Link
 
 on:
+  workflow_dispatch:
+    inputs:
+      article_url:
+        description: Article URL to process
+        required: true
+      request_id:
+        description: Optional request id
+        required: false
+      issue_number:
+        description: Optional issue number to reply to
+        required: false
   issues:
     types:
       - opened
+      - edited
+      - reopened
+  issue_comment:
+    types:
+      - created
 
 permissions:
   contents: write
@@ -11,13 +27,12 @@ permissions:
   id-token: write
   issues: write
 
-concurrency:
-  group: process-link-${{ github.event.issue.number }}
-  cancel-in-progress: false
-
 jobs:
   process:
-    if: startsWith(github.event.issue.title, '[Article Request]')
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' && startsWith(github.event.issue.title, '[Article Request]')) ||
+      (github.event_name == 'issue_comment' && startsWith(github.event.issue.title, '[Article Request]') && contains(github.event.comment.body, '/process'))
     runs-on: ubuntu-latest
 
     steps:
@@ -39,8 +54,9 @@ jobs:
           const fs = require("node:fs");
           const crypto = require("node:crypto");
           const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8"));
+          const inputUrl = event.inputs?.article_url;
           const issue = event.issue;
-          const text = `${issue.title}\n${issue.body || ""}`;
+          const text = inputUrl ? `ARTICLE_URL: ${inputUrl}` : `${issue.title}\n${issue.body || ""}\n${event.comment?.body || ""}`;
           const explicit = text.match(/ARTICLE_URL:\s*(https?:\/\/[^\s<>)\]]+)/i);
           const fallback = text.match(/https?:\/\/[^\s<>)\]]+/i);
           const url = explicit?.[1] || fallback?.[0];
@@ -48,25 +64,28 @@ jobs:
             throw new Error("No URL found in issue body.");
           }
 
-          const authUser = text.match(/AUTH_USER:\s*([^\n\r]+)/i)?.[1]?.trim();
-          const authSignature = text.match(/AUTH_SIGNATURE:\s*([a-f0-9]{64})/i)?.[1]?.trim().toLowerCase();
-          const expectedUser = process.env.FEED_USER;
-          const expectedPassword = process.env.FEED_PASSWORD;
-          if (!expectedUser || !expectedPassword) {
-            throw new Error("FEED_USER or FEED_PASSWORD secret is not configured.");
+          if (!event.inputs) {
+            const authUser = text.match(/AUTH_USER:\s*([^\n\r]+)/i)?.[1]?.trim();
+            const authSignature = text.match(/AUTH_SIGNATURE:\s*([a-f0-9]{64})/i)?.[1]?.trim().toLowerCase();
+            const expectedUser = process.env.FEED_USER;
+            const expectedPassword = process.env.FEED_PASSWORD;
+            if (!expectedUser || !expectedPassword) {
+              throw new Error("FEED_USER or FEED_PASSWORD secret is not configured.");
+            }
+
+            const expectedSignature = crypto
+              .createHash("sha256")
+              .update(`${expectedUser}:${expectedPassword}:${url}`)
+              .digest("hex");
+
+            if (authUser !== expectedUser || authSignature !== expectedSignature) {
+              throw new Error("Invalid feed account or password signature.");
+            }
           }
 
-          const expectedSignature = crypto
-            .createHash("sha256")
-            .update(`${expectedUser}:${expectedPassword}:${url}`)
-            .digest("hex");
-
-          if (authUser !== expectedUser || authSignature !== expectedSignature) {
-            throw new Error("Invalid feed account or password signature.");
-          }
-
-          const requestId = `issue-${issue.number}`;
-          fs.appendFileSync(process.env.GITHUB_OUTPUT, `url=${url}\nrequest_id=${requestId}\n`);
+          const requestId = event.inputs?.request_id || (issue ? `issue-${issue.number}` : `manual-${Date.now()}`);
+          const issueNumber = event.inputs?.issue_number || issue?.number || "";
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `url=${url}\nrequest_id=${requestId}\nissue_number=${issueNumber}\n`);
           NODE
 
       - name: Generate article from submitted link
@@ -108,12 +127,13 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Reply to issue
+        if: steps.request.outputs.issue_number != ''
         env:
           GH_TOKEN: ${{ github.token }}
           ARTICLE_URL: ${{ steps.generate.outputs.article_url }}
           SNIPPET_URL: ${{ steps.generate.outputs.snippet_url }}
         run: |
-          gh issue comment "${{ github.event.issue.number }}" --body "处理完成：${ARTICLE_URL}
+          gh issue comment "${{ steps.request.outputs.issue_number }}" --body "处理完成：${ARTICLE_URL}
 
 公众号 HTML：${SNIPPET_URL}"
-          gh issue close "${{ github.event.issue.number }}" --comment "已生成并部署。"
+          gh issue close "${{ steps.request.outputs.issue_number }}" --comment "已生成并部署。"
