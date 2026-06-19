@@ -30,6 +30,14 @@
     <p class="lead">提交英文文章链接后，GitHub Actions 会抓取正文，按「AI习语」定位精翻、改写，并输出公众号 HTML。</p>
     <form id="feedForm">
       <div>
+        <label for="accountUser">账号</label>
+        <input id="accountUser" name="accountUser" type="text" autocomplete="username" placeholder="Normande" required>
+      </div>
+      <div>
+        <label for="accountPassword">密码</label>
+        <input id="accountPassword" name="accountPassword" type="password" autocomplete="current-password" required>
+      </div>
+      <div>
         <label for="articleUrl">文章链接</label>
         <input id="articleUrl" name="articleUrl" type="url" placeholder="https://example.com/article" required>
       </div>
@@ -39,7 +47,7 @@
       </div>
       <p class="error" id="errorText">请输入有效的 http 或 https 链接。</p>
       <div class="row">
-        <p class="hint">提交后会打开 GitHub Issue 页面，确认创建即可进入处理队列。</p>
+        <p class="hint">提交后会打开 GitHub Issue 页面，确认创建即可进入处理队列；明文密码不会写入 Issue。</p>
         <div>
           <a class="button" href="./latest.html">返回文章</a>
           <button class="primary" type="submit">提交到 Actions</button>
@@ -49,11 +57,13 @@
   </main>
   <script>
     const form = document.getElementById("feedForm");
+    const accountUserInput = document.getElementById("accountUser");
+    const accountPasswordInput = document.getElementById("accountPassword");
     const urlInput = document.getElementById("articleUrl");
     const noteInput = document.getElementById("note");
     const errorText = document.getElementById("errorText");
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       let articleUrl;
       try {
@@ -69,9 +79,20 @@
       }
 
       errorText.style.display = "none";
+      const accountUser = accountUserInput.value.trim();
+      const accountPassword = accountPasswordInput.value;
+      if (!accountUser || !accountPassword) {
+        errorText.textContent = "请输入账号和密码。";
+        errorText.style.display = "block";
+        return;
+      }
+
+      const signature = await sha256Hex(`${accountUser}:${accountPassword}:${articleUrl.toString()}`);
       const title = `[Article Request] ${articleUrl.hostname}`;
       const body = [
         `ARTICLE_URL: ${articleUrl.toString()}`,
+        `AUTH_USER: ${accountUser}`,
+        `AUTH_SIGNATURE: ${signature}`,
         "",
         `NOTE: ${noteInput.value.trim() || "N/A"}`
       ].join("\n");
@@ -80,7 +101,12 @@
       issueUrl.searchParams.set("body", body);
       window.location.href = issueUrl.toString();
     });
+
+    async function sha256Hex(value) {
+      const bytes = new TextEncoder().encode(value);
+      const digest = await crypto.subtle.digest("SHA-256", bytes);
+      return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+    }
   </script>
 </body>
 </html>
-
