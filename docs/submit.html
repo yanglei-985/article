@@ -19,8 +19,11 @@
     .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
     button, a.button { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; }
     button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    button:disabled { opacity: .65; cursor: wait; }
     .hint { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
     .error { display: none; color: #b42318; font-size: 13px; margin: 0; }
+    .status { display: none; margin: 0; color: #245b38; font-size: 14px; line-height: 1.7; }
+    .status a { color: var(--blue); }
   </style>
 </head>
 <body>
@@ -47,14 +50,16 @@
       </div>
       <p class="error" id="errorText">请输入有效的 http 或 https 链接。</p>
       <div class="row">
-        <p class="hint">提交后会打开 GitHub Issue 页面，确认创建即可进入处理队列；明文密码不会写入 Issue。</p>
+        <p class="hint">配置直连后端后会直接提交到 GitHub Actions；未配置时会打开 GitHub Issue 队列，明文密码不会写入 Issue。</p>
         <div>
           <a class="button" href="./latest.html">返回文章</a>
-          <button class="primary" type="submit">提交到 Actions</button>
+          <button class="primary" id="submitButton" type="submit">提交到 Actions</button>
         </div>
       </div>
+      <p class="status" id="statusText"></p>
     </form>
   </main>
+  <script src="./submit-config.js"></script>
   <script>
     const form = document.getElementById("feedForm");
     const accountUserInput = document.getElementById("accountUser");
@@ -62,6 +67,8 @@
     const urlInput = document.getElementById("articleUrl");
     const noteInput = document.getElementById("note");
     const errorText = document.getElementById("errorText");
+    const statusText = document.getElementById("statusText");
+    const submitButton = document.getElementById("submitButton");
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -69,21 +76,26 @@
       try {
         articleUrl = new URL(urlInput.value.trim());
       } catch {
-        errorText.style.display = "block";
+        showError("请输入有效的 http 或 https 链接。");
         return;
       }
 
       if (!["http:", "https:"].includes(articleUrl.protocol)) {
-        errorText.style.display = "block";
+        showError("请输入有效的 http 或 https 链接。");
         return;
       }
 
-      errorText.style.display = "none";
+      clearMessages();
       const accountUser = accountUserInput.value.trim();
       const accountPassword = accountPasswordInput.value;
       if (!accountUser || !accountPassword) {
-        errorText.textContent = "请输入账号和密码。";
-        errorText.style.display = "block";
+        showError("请输入账号和密码。");
+        return;
+      }
+
+      const submitEndpoint = String(window.ARTICLE_SUBMIT_ENDPOINT || "").trim();
+      if (submitEndpoint) {
+        await submitDirectly(submitEndpoint, articleUrl, accountUser, accountPassword);
         return;
       }
 
@@ -102,10 +114,85 @@
       window.location.href = issueUrl.toString();
     });
 
+    async function submitDirectly(endpoint, articleUrl, accountUser, accountPassword) {
+      const requestId = `manual-${Date.now()}-${slugify(articleUrl.hostname)}`;
+      submitButton.disabled = true;
+      submitButton.textContent = "提交中...";
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            accountUser,
+            accountPassword,
+            articleUrl: articleUrl.toString(),
+            note: noteInput.value.trim(),
+            requestId
+          })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || payload.ok === false) {
+          throw new Error(payload.error || "提交失败，请稍后重试。");
+        }
+
+        const articleLink = payload.articleUrl || buildExpectedArticleUrl(requestId);
+        statusText.innerHTML = `已提交到 GitHub Actions，通常 2-4 分钟后生成：<a href="${escapeAttribute(articleLink)}">${escapeHtml(articleLink)}</a>`;
+        statusText.style.display = "block";
+        form.reset();
+      } catch (error) {
+        showError(error.message || "提交失败，请稍后重试。");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "提交到 Actions";
+      }
+    }
+
+    function buildExpectedArticleUrl(requestId) {
+      const date = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Shanghai",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).format(new Date());
+      return `https://yanglei-985.github.io/article/articles/${date}-${requestId}.html`;
+    }
+
+    function showError(message) {
+      statusText.style.display = "none";
+      errorText.textContent = message;
+      errorText.style.display = "block";
+    }
+
+    function clearMessages() {
+      errorText.style.display = "none";
+      statusText.style.display = "none";
+    }
+
     async function sha256Hex(value) {
       const bytes = new TextEncoder().encode(value);
       const digest = await crypto.subtle.digest("SHA-256", bytes);
       return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+    }
+
+    function slugify(value) {
+      return String(value || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 48) || "link";
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value).replaceAll("`", "&#96;");
     }
   </script>
 </body>
