@@ -133,7 +133,10 @@ jobs:
           ARTICLE_URL: ${{ steps.generate.outputs.article_url }}
           SNIPPET_URL: ${{ steps.generate.outputs.snippet_url }}
         run: |
-          gh issue comment "${{ steps.request.outputs.issue_number }}" --body "处理完成：${ARTICLE_URL}
+          cat > /tmp/article-reply.md <<EOF
+          处理完成：${ARTICLE_URL}
 
-公众号 HTML：${SNIPPET_URL}"
+          公众号 HTML：${SNIPPET_URL}
+          EOF
+          gh issue comment "${{ steps.request.outputs.issue_number }}" --body-file /tmp/article-reply.md
           gh issue close "${{ steps.request.outputs.issue_number }}" --comment "已生成并部署。"
