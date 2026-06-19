@@ -22,6 +22,27 @@ RSS sources / Source API
 → GitHub Pages deployment
 ```
 
+## Feed One Link
+
+Open:
+
+```text
+https://yanglei-985.github.io/article/submit.html
+```
+
+Paste an article URL and submit. The page opens a prefilled GitHub Issue. After you create the issue, `Process Submitted Link` runs in GitHub Actions:
+
+```text
+Issue URL
+→ fetch article page
+→ refined translation and rewrite
+→ AI信息Gap-style WeChat HTML
+→ GitHub Pages deployment
+→ reply to the issue with the article URL
+```
+
+For safety, the issue-triggered workflow only processes requests opened by `yanglei-985`.
+
 ## GitHub Secrets
 
 Required for real daily generation:
