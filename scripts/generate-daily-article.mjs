@@ -7,9 +7,11 @@ const outputsDir = path.join(root, "outputs");
 const CODE_STYLE = "color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;";
 
 const today = getDateStamp();
-const runDir = path.join(outputsDir, today);
-const articlePagePath = path.join(docsDir, "articles", `${today}.html`);
-const snippetPagePath = path.join(docsDir, "articles", `${today}.wechat.html`);
+const requestedUrl = (process.env.ARTICLE_URL || "").trim();
+const articleKey = requestedUrl ? `${today}-${deriveRequestKey(requestedUrl)}` : today;
+const runDir = path.join(outputsDir, articleKey);
+const articlePagePath = path.join(docsDir, "articles", `${articleKey}.html`);
+const snippetPagePath = path.join(docsDir, "articles", `${articleKey}.wechat.html`);
 
 const profile = await readJson("config/profile.json");
 const sources = await readJson("config/sources.json");
@@ -35,9 +37,12 @@ if (!hasModel) {
   generated = await generateWithModel(selected, profile, baoyuPrompt, stylePrompt);
 }
 
-const snippet = ensureWechatSnippet(generated.html, selected);
+const snippet = ensureWechatSnippet(generated.html, selected, {
+  allowFallback: generationMode === "fallback"
+});
 const preview = buildPreviewPage({
   date: today,
+  articleKey,
   source: selected,
   draft: generated.draft,
   snippet,
@@ -49,14 +54,23 @@ await fs.writeFile(path.join(runDir, "draft.md"), `${generated.draft.trim()}\n`,
 await fs.writeFile(path.join(runDir, "article.html"), snippet, "utf8");
 await fs.writeFile(articlePagePath, preview, "utf8");
 await fs.writeFile(snippetPagePath, snippet, "utf8");
-await fs.writeFile(path.join(docsDir, "index.html"), buildIndexPage(today), "utf8");
-await fs.writeFile(path.join(docsDir, "latest.html"), buildRedirect(`articles/${today}.html`), "utf8");
+await fs.writeFile(path.join(docsDir, "index.html"), buildIndexPage(articleKey), "utf8");
+await fs.writeFile(path.join(docsDir, "latest.html"), buildRedirect(`articles/${articleKey}.html`), "utf8");
 
 console.log(`Generated ${path.relative(root, articlePagePath)}`);
 console.log(`Selected: ${selected.title}`);
 console.log(`Mode: ${generationMode}`);
+await writeGithubOutput({
+  article_key: articleKey,
+  article_url: `${getPagesBaseUrl()}/articles/${articleKey}.html`,
+  snippet_url: `${getPagesBaseUrl()}/articles/${articleKey}.wechat.html`
+});
 
 async function loadCandidates() {
+  if (requestedUrl) {
+    return [await loadArticleFromUrl(requestedUrl)];
+  }
+
   if (!process.env.SOURCE_API_URL) {
     const rssArticles = await loadRssCandidates(sources);
     if (rssArticles.length) {
@@ -85,6 +99,119 @@ async function loadCandidates() {
     throw new Error(`API returned non-JSON content: ${raw.slice(0, 80).replace(/\s+/g, " ")}`);
   }
   return normalizeArticles(payload);
+}
+
+async function loadArticleFromUrl(url) {
+  let parsedUrl;
+  try {
+    parsedUrl = new URL(url);
+  } catch {
+    throw new Error(`Invalid ARTICLE_URL: ${url}`);
+  }
+
+  if (!["http:", "https:"].includes(parsedUrl.protocol)) {
+    throw new Error(`ARTICLE_URL must be http or https: ${url}`);
+  }
+
+  const response = await fetch(parsedUrl.toString(), {
+    headers: {
+      Accept: "text/html, text/plain, application/xhtml+xml, */*",
+      "User-Agent": "AI-Xiyu-Article-Bot/1.0"
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`Article URL fetch failed: ${response.status} ${response.statusText}`);
+  }
+
+  const contentType = response.headers.get("content-type") || "";
+  const raw = await response.text();
+  const finalUrl = response.url || parsedUrl.toString();
+
+  if (!contentType.includes("html")) {
+    const text = raw.replace(/\s+/g, " ").trim();
+    return {
+      title: parsedUrl.hostname,
+      url: finalUrl,
+      source: parsedUrl.hostname,
+      publishedAt: "",
+      summary: text.slice(0, 1200),
+      content: text.slice(0, 12000),
+      tags: ["manual-link"],
+      requestType: "manual-link"
+    };
+  }
+
+  return parseHtmlArticle(raw, finalUrl);
+}
+
+function parseHtmlArticle(html, url) {
+  const parsedUrl = new URL(url);
+  const title = decodeXml(stripTags(getMetaContent(html, "og:title") || getMetaContent(html, "twitter:title") || getTag(html, "title") || parsedUrl.hostname));
+  const description = decodeXml(stripTags(getMetaContent(html, "description") || getMetaContent(html, "og:description") || getMetaContent(html, "twitter:description")));
+  const publishedAt = decodeXml(
+    getMetaContent(html, "article:published_time") ||
+      getMetaContent(html, "date") ||
+      getMetaContent(html, "pubdate") ||
+      getMetaContent(html, "publishdate")
+  );
+  const articleHtml = extractReadableHtml(html);
+  const text = decodeXml(stripTags(articleHtml)).slice(0, 12000);
+
+  return {
+    title,
+    url,
+    source: parsedUrl.hostname.replace(/^www\./, ""),
+    publishedAt,
+    summary: (description || text).slice(0, 1200),
+    content: text,
+    tags: ["manual-link"],
+    requestType: "manual-link"
+  };
+}
+
+function extractReadableHtml(html) {
+  const cleaned = html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<svg\b[\s\S]*?<\/svg>/gi, " ")
+    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, " ")
+    .replace(/<header\b[\s\S]*?<\/header>/gi, " ")
+    .replace(/<footer\b[\s\S]*?<\/footer>/gi, " ")
+    .replace(/<nav\b[\s\S]*?<\/nav>/gi, " ")
+    .replace(/<aside\b[\s\S]*?<\/aside>/gi, " ");
+  const candidates = [
+    ...matchBlocks(cleaned, "article"),
+    ...matchBlocks(cleaned, "main"),
+    getTag(cleaned, "body"),
+    cleaned
+  ].filter(Boolean);
+
+  candidates.sort((a, b) => stripTags(b).length - stripTags(a).length);
+  return candidates[0] || cleaned;
+}
+
+function matchBlocks(html, tagName) {
+  const escaped = tagName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return [...html.matchAll(new RegExp(`<${escaped}\\b[^>]*>[\\s\\S]*?<\\/${escaped}>`, "gi"))].map((match) => match[0]);
+}
+
+function getMetaContent(html, name) {
+  const lowerName = name.toLowerCase();
+  const metas = html.match(/<meta\b[^>]*>/gi) || [];
+  for (const meta of metas) {
+    const attrName = (getAttribute(meta, "name") || getAttribute(meta, "property")).toLowerCase();
+    if (attrName === lowerName) {
+      return getAttribute(meta, "content");
+    }
+  }
+  return "";
+}
+
+function getAttribute(tag, attr) {
+  const escaped = attr.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = tag.match(new RegExp(`${escaped}\\s*=\\s*["']([^"']*)["']`, "i"));
+  return match ? match[1] : "";
 }
 
 async function loadRssCandidates(sourceConfig) {
@@ -386,10 +513,14 @@ function generateFallback(article, profileConfig) {
   };
 }
 
-function ensureWechatSnippet(html, article) {
+function ensureWechatSnippet(html, article, options = {}) {
   const trimmed = String(html || "").trim();
   if (trimmed.includes("data-role=\"outer\"") && trimmed.includes("</section>")) {
     return minifySnippet(styleCodeLabels(trimmed));
+  }
+
+  if (!options.allowFallback) {
+    throw new Error("Model did not return a valid AI-gap HTML snippet.");
   }
 
   return makeSnippet([
@@ -415,7 +546,7 @@ function styleCodeLabels(html) {
   });
 }
 
-function buildPreviewPage({ date, source, draft, snippet, mode }) {
+function buildPreviewPage({ date, articleKey, source, draft, snippet, mode }) {
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -458,7 +589,8 @@ function buildPreviewPage({ date, source, draft, snippet, mode }) {
       </div>
       <div class="actions">
         <button class="primary" id="copyHtml">复制公众号 HTML</button>
-        <a class="button" href="${date}.wechat.html">打开纯 HTML</a>
+        <a class="button" href="${articleKey}.wechat.html">打开纯 HTML</a>
+        <a class="button" href="../submit.html">投喂链接</a>
       </div>
     </section>
     <section class="layout">
@@ -551,4 +683,39 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value).replaceAll("`", "&#96;");
+}
+
+function deriveRequestKey(url) {
+  if (process.env.ARTICLE_REQUEST_ID) {
+    return slugify(process.env.ARTICLE_REQUEST_ID);
+  }
+
+  try {
+    const parsed = new URL(url);
+    const pieces = `${parsed.hostname}-${parsed.pathname}`.replace(/\.[a-z0-9]+$/i, "");
+    return slugify(pieces).slice(0, 72) || "manual-link";
+  } catch {
+    return "manual-link";
+  }
+}
+
+function slugify(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 96);
+}
+
+function getPagesBaseUrl() {
+  return (process.env.PAGES_BASE_URL || "https://yanglei-985.github.io/article").replace(/\/$/, "");
+}
+
+async function writeGithubOutput(values) {
+  if (!process.env.GITHUB_OUTPUT) {
+    return;
+  }
+
+  const lines = Object.entries(values).map(([key, value]) => `${key}=${value}`);
+  await fs.appendFile(process.env.GITHUB_OUTPUT, `${lines.join("\n")}\n`, "utf8");
 }
