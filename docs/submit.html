@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>投喂链接 - AI习语</title>
+  <style>
+    :root { color-scheme: light; --blue:#3c70c6; --ink:#20242a; --muted:#606975; --line:#dfe5ee; --bg:#f6f8fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+    main { max-width: 760px; margin: 0 auto; padding: 42px 18px 56px; }
+    .eyebrow { margin: 0 0 8px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    h1 { margin: 0 0 10px; font-size: clamp(28px, 5vw, 44px); line-height: 1.08; letter-spacing: 0; }
+    .lead { margin: 0 0 28px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    form { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 14px; }
+    label { font-size: 14px; font-weight: 700; }
+    input, textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 12px 13px; font: inherit; color: var(--ink); background: #fff; }
+    textarea { min-height: 96px; resize: vertical; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    button, a.button { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .hint { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .error { display: none; color: #b42318; font-size: 13px; margin: 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">AI习语</p>
+    <h1>投喂一篇文章</h1>
+    <p class="lead">提交英文文章链接后，GitHub Actions 会抓取正文，按「AI习语」定位精翻、改写，并输出公众号 HTML。</p>
+    <form id="feedForm">
+      <div>
+        <label for="articleUrl">文章链接</label>
+        <input id="articleUrl" name="articleUrl" type="url" placeholder="https://example.com/article" required>
+      </div>
+      <div>
+        <label for="note">备注</label>
+        <textarea id="note" name="note" placeholder="可选：你希望关注的角度，例如提示词、英文表达、工作流、学习方法"></textarea>
+      </div>
+      <p class="error" id="errorText">请输入有效的 http 或 https 链接。</p>
+      <div class="row">
+        <p class="hint">提交后会打开 GitHub Issue 页面，确认创建即可进入处理队列。</p>
+        <div>
+          <a class="button" href="./latest.html">返回文章</a>
+          <button class="primary" type="submit">提交到 Actions</button>
+        </div>
+      </div>
+    </form>
+  </main>
+  <script>
+    const form = document.getElementById("feedForm");
+    const urlInput = document.getElementById("articleUrl");
+    const noteInput = document.getElementById("note");
+    const errorText = document.getElementById("errorText");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      let articleUrl;
+      try {
+        articleUrl = new URL(urlInput.value.trim());
+      } catch {
+        errorText.style.display = "block";
+        return;
+      }
+
+      if (!["http:", "https:"].includes(articleUrl.protocol)) {
+        errorText.style.display = "block";
+        return;
+      }
+
+      errorText.style.display = "none";
+      const title = `[Article Request] ${articleUrl.hostname}`;
+      const body = [
+        `ARTICLE_URL: ${articleUrl.toString()}`,
+        "",
+        `NOTE: ${noteInput.value.trim() || "N/A"}`
+      ].join("\n");
+      const issueUrl = new URL("https://github.com/yanglei-985/article/issues/new");
+      issueUrl.searchParams.set("title", title);
+      issueUrl.searchParams.set("body", body);
+      window.location.href = issueUrl.toString();
+    });
+  </script>
+</body>
+</html>
+
