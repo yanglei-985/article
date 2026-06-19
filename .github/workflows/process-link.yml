@@ -42,7 +42,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Extract request URL
         id: request
@@ -56,12 +56,24 @@ jobs:
           const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8"));
           const inputUrl = event.inputs?.article_url;
           const issue = event.issue;
-          const text = inputUrl ? `ARTICLE_URL: ${inputUrl}` : `${issue.title}\n${issue.body || ""}\n${event.comment?.body || ""}`;
+          const text = inputUrl ? `ARTICLE_URL: ${inputUrl}` : `${issue?.title || ""}\n${issue?.body || ""}\n${event.comment?.body || ""}`;
+          const output = (values) => {
+            const lines = Object.entries(values).map(([key, value]) => `${key}=${String(value).replace(/\r?\n/g, " ")}`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `${lines.join("\n")}\n`);
+          };
+          const issueNumber = event.inputs?.issue_number || issue?.number || "";
+          const reject = (message) => {
+            output({ ok: "false", error: message, issue_number: issueNumber });
+            if (event.inputs) {
+              throw new Error(message);
+            }
+            process.exit(0);
+          };
           const explicit = text.match(/ARTICLE_URL:\s*(https?:\/\/[^\s<>)\]]+)/i);
           const fallback = text.match(/https?:\/\/[^\s<>)\]]+/i);
           const url = explicit?.[1] || fallback?.[0];
           if (!url) {
-            throw new Error("No URL found in issue body.");
+            reject("没有在提交内容里找到有效文章链接。");
           }
 
           if (!event.inputs) {
@@ -70,25 +82,46 @@ jobs:
             const expectedUser = process.env.FEED_USER;
             const expectedPassword = process.env.FEED_PASSWORD;
             if (!expectedUser || !expectedPassword) {
-              throw new Error("FEED_USER or FEED_PASSWORD secret is not configured.");
+              reject("后端还没有配置 FEED_USER 或 FEED_PASSWORD。");
             }
 
-            const expectedSignature = crypto
-              .createHash("sha256")
-              .update(`${expectedUser}:${expectedPassword}:${url}`)
-              .digest("hex");
+            const urlVariants = new Set([url]);
+            try {
+              const normalized = new URL(url).toString();
+              urlVariants.add(normalized);
+              urlVariants.add(normalized.replace(/\/$/, ""));
+              urlVariants.add(`${normalized.replace(/\/$/, "")}/`);
+            } catch {
+              reject("文章链接格式不正确。");
+            }
+            const expectedSignatures = [...urlVariants].map((candidateUrl) =>
+              crypto.createHash("sha256").update(`${expectedUser}:${expectedPassword}:${candidateUrl}`).digest("hex")
+            );
 
-            if (authUser !== expectedUser || authSignature !== expectedSignature) {
-              throw new Error("Invalid feed account or password signature.");
+            if (authUser !== expectedUser || !expectedSignatures.includes(authSignature)) {
+              reject("账号或密码校验失败，请重新输入后再提交。");
             }
           }
 
           const requestId = event.inputs?.request_id || (issue ? `issue-${issue.number}` : `manual-${Date.now()}`);
-          const issueNumber = event.inputs?.issue_number || issue?.number || "";
-          fs.appendFileSync(process.env.GITHUB_OUTPUT, `url=${url}\nrequest_id=${requestId}\nissue_number=${issueNumber}\n`);
+          output({ ok: "true", url, request_id: requestId, issue_number: issueNumber });
           NODE
 
+      - name: Reply to invalid request
+        if: steps.request.outputs.ok != 'true' && steps.request.outputs.issue_number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUEST_ERROR: ${{ steps.request.outputs.error }}
+        run: |
+          cat > /tmp/article-invalid.md <<EOF
+          没有开始处理：${REQUEST_ERROR}
+
+          请确认账号、密码和文章链接后重新提交。
+          EOF
+          gh issue comment "${{ steps.request.outputs.issue_number }}" --body-file /tmp/article-invalid.md
+
       - name: Generate article from submitted link
+        if: steps.request.outputs.ok == 'true'
         id: generate
         run: node scripts/generate-daily-article.mjs
         env:
@@ -100,9 +133,11 @@ jobs:
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
 
       - name: Verify output
+        if: steps.request.outputs.ok == 'true'
         run: node scripts/check-output.mjs
 
       - name: Commit generated files
+        if: steps.request.outputs.ok == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -115,19 +150,22 @@ jobs:
           fi
 
       - name: Setup Pages
+        if: steps.request.outputs.ok == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
+        if: steps.request.outputs.ok == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
       - name: Deploy to GitHub Pages
+        if: steps.request.outputs.ok == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
 
       - name: Reply to issue
-        if: steps.request.outputs.issue_number != ''
+        if: steps.request.outputs.ok == 'true' && steps.request.outputs.issue_number != ''
         env:
           GH_TOKEN: ${{ github.token }}
           ARTICLE_URL: ${{ steps.generate.outputs.article_url }}
