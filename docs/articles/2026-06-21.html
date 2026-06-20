@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI习语日报 - 2026-06-21</title>
+  <style>
+    :root { color-scheme: light; --blue:#3c70c6; --ink:#20242a; --muted:#606975; --line:#dfe5ee; --bg:#f6f8fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+    .shell { max-width: 1100px; margin: 0 auto; padding: 28px 18px 48px; }
+    .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .brand { min-width: 0; }
+    .eyebrow { margin: 0 0 4px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 38px); line-height: 1.12; letter-spacing: 0; }
+    .meta { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    button, a.button { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 18px; align-items: start; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .panel-title { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .wechat-preview { padding: 18px 12px; background: #fff; }
+    .side { display: grid; gap: 18px; }
+    .box { padding: 16px; }
+    .box p { margin: 0 0 10px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .box code { word-break: break-all; color: var(--blue); }
+    textarea { width: 100%; height: 360px; border: 0; border-top: 1px solid var(--line); padding: 14px; resize: vertical; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: #334; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0; padding: 14px; font-size: 13px; line-height: 1.6; color: #394150; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .topbar { align-items: flex-start; flex-direction: column; } .actions { justify-content: flex-start; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div class="brand">
+        <p class="eyebrow">AI习语 · 2026-06-21</p>
+        <h1>DeusData/codebase-memory-mcp</h1>
+        <p class="meta">来源：GitHub Trending Daily · 生成模式：AI 精翻 + 排版</p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="copyHtml">复制公众号 HTML</button>
+        <a class="button" href="2026-06-21.wechat.html">打开纯 HTML</a>
+        <a class="button" href="../submit.html">投喂链接</a>
+      </div>
+    </section>
+    <section class="layout">
+      <article class="panel">
+        <p class="panel-title">公众号预览</p>
+        <div class="wechat-preview"><section data-role="outer" label="edit by 135editor" style="margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;"><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">AI 编程的瓶颈，越来越不是“模型会不会写代码”，而是“它能不能低成本理解你的代码库”。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">今天选中的是 GitHub 项目 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">DeusData/codebase-memory-mcp</code>。它的定位很直接：一个面向 AI coding agents 的高性能 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">MCP server</code>。它会把代码库索引成一个持久化知识图谱 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">persistent knowledge graph</code>，让 AI 不再一遍遍读文件、搜索、猜结构，而是先查询函数、类、调用链、HTTP 路由和跨服务链接。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">原文给出的数字很夸张，也很有方向感：普通仓库可在毫秒级完成索引；Linux kernel 这种 2800 万行代码、7.5 万个文件的超大仓库，约 3 分钟完成索引；结构查询低于 1ms。项目称，相比逐文件探索，结构化查询可做到 10 倍更少 token、2.1 倍更少工具调用，并在评测中达到 83% 的回答质量。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这里有几个英文技术词值得记住：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">tree-sitter AST analysis</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Hybrid LSP semantic type resolution</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">structural queries</code>。它们共同指向一个趋势：上下文不再只是“塞更多文件进窗口”，而是把代码库变成可检索、可推理、可复用的结构化记忆。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">项目支持 158 种语言，通过 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">tree-sitter</code> 做语法树解析，并对 Python、TypeScript / JavaScript / JSX / TSX、PHP、C#、Go、C、C++、Java、Kotlin、Rust 等语言加入 LSP 语义类型解析。它提供 14 个 MCP 工具，覆盖搜索、调用链追踪、架构分析、影响分析、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Cypher</code> 查询、死代码检测、跨服务 HTTP 链接和 ADR 管理。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">部署方式也符合工具党的期待：单个静态二进制文件，支持 macOS、Linux、Windows，零依赖，不需要 Docker、运行时依赖或 API Key。安装后可接入 Claude Code、Codex CLI、Gemini CLI、Aider、Zed、OpenCode、VS Code 等多种 coding agent。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">AI习语视角下，这个项目的重点不是“又一个炫技工具”，而是一个工作流变化：面对中大型代码库时，不要一上来让 AI 读文件、改代码、生成方案。更稳的方式是先让 AI 建立代码地图，再让它解释路径、判断影响面，最后才动手修改。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">你可以直接套用这个提示词模式：第一步，请先索引当前项目，不要修改代码，完成后总结主要模块、入口、核心数据流、关键依赖和潜在风险点。第二步，针对我要修改的目标，请查询相关函数、类、调用链、路由、配置和测试文件，并说明相关原因，按影响优先级排序。第三步，在给出修改方案前，请列出最小改动范围、可能破坏的行为、需要验证的测试，以及如果信息不足还需要查询什么。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这套方法的核心，是把 AI 从“临时阅读者”变成“有项目记忆的协作者”。你不是让它凭上下文窗口硬扛，而是让它先拥有一张代码地图。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">但也要注意安全边界。原文明确说明：这个工具会读取你的代码库，并写入 agent 配置文件。项目称所有处理 100% 在本地完成，代码不会离开你的机器，发布二进制文件有签名、校验和，并经过 70 多个杀毒引擎扫描。即便如此，在公司代码库或敏感项目中，安装前仍建议先阅读安装脚本。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">今天的英文学习动作：把 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">knowledge graph</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">structural query</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">call chain</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">impact analysis</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">dead code detection</code> 加入你的 AI 编程词库。下次读英文技术项目时，不只看功能，还要看它在解决哪一种上下文效率问题。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">来源：GitHub Trending Daily。原文：DeusData/codebase-memory-mcp。链接：https://github.com/DeusData/codebase-memory-mcp</p><blockquote style="margin:20px 0 0;padding:12px 14px;border-left:3px solid rgb(60,112,198);background:rgba(27,31,35,0.04);color:#666;font-size:14px;line-height:1.8em;letter-spacing:0.02em;">我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</blockquote></section></div>
+      </article>
+      <aside class="side">
+        <section class="panel box">
+          <p class="panel-title" style="margin:-16px -16px 14px;">原文信息</p>
+          <p><strong>Score:</strong> 15</p>
+          <p><strong>URL:</strong> <a href="https://github.com/DeusData/codebase-memory-mcp">https://github.com/DeusData/codebase-memory-mcp</a></p>
+          <p><strong>摘要:</strong> High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies. codebase-memory-mcp The fastest and most efficient code intelligence engine for AI coding agents. Full-indexes an average repository in milliseconds, the Linux kernel (28M LOC, 75K files) in 3 minutes. Answers structural queries in under 1ms. Ships as a single static binary for macOS, Linux, and Windows — download, run install , done. High-quality parsing through tree-sitter AST analysis across all 158 languages, enhanced with Hybrid LSP semantic type resolution for Python, TypeScript / JavaScript / JSX / TSX, PHP, C#, Go, C, C++, Java, Kotlin, and Rust — producing a persistent knowledge graph of functions, classes, call chains, HTTP routes, and cross-service links. 14 MCP tools. Zero dependencies. Plug and play across 11 coding agents. Research — The design and benchmarks behind this project are described in the preprint Codebase-Memory: Tree-Sitter-Based Knowledge Graphs for LLM Code Exploration via MCP (arXiv:2603.27277). Evaluated across 31 real-world repositor</p>
+        </section>
+        <section class="panel">
+          <p class="panel-title">复制区</p>
+          <textarea id="htmlSource" spellcheck="false">&lt;section data-role=&quot;outer&quot; label=&quot;edit by 135editor&quot; style=&quot;margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;&quot;&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;AI 编程的瓶颈，越来越不是“模型会不会写代码”，而是“它能不能低成本理解你的代码库”。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;今天选中的是 GitHub 项目 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;DeusData/codebase-memory-mcp&lt;/code&gt;。它的定位很直接：一个面向 AI coding agents 的高性能 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;MCP server&lt;/code&gt;。它会把代码库索引成一个持久化知识图谱 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;persistent knowledge graph&lt;/code&gt;，让 AI 不再一遍遍读文件、搜索、猜结构，而是先查询函数、类、调用链、HTTP 路由和跨服务链接。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;原文给出的数字很夸张，也很有方向感：普通仓库可在毫秒级完成索引；Linux kernel 这种 2800 万行代码、7.5 万个文件的超大仓库，约 3 分钟完成索引；结构查询低于 1ms。项目称，相比逐文件探索，结构化查询可做到 10 倍更少 token、2.1 倍更少工具调用，并在评测中达到 83% 的回答质量。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这里有几个英文技术词值得记住：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;tree-sitter AST analysis&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Hybrid LSP semantic type resolution&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;structural queries&lt;/code&gt;。它们共同指向一个趋势：上下文不再只是“塞更多文件进窗口”，而是把代码库变成可检索、可推理、可复用的结构化记忆。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;项目支持 158 种语言，通过 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;tree-sitter&lt;/code&gt; 做语法树解析，并对 Python、TypeScript / JavaScript / JSX / TSX、PHP、C#、Go、C、C++、Java、Kotlin、Rust 等语言加入 LSP 语义类型解析。它提供 14 个 MCP 工具，覆盖搜索、调用链追踪、架构分析、影响分析、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Cypher&lt;/code&gt; 查询、死代码检测、跨服务 HTTP 链接和 ADR 管理。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;部署方式也符合工具党的期待：单个静态二进制文件，支持 macOS、Linux、Windows，零依赖，不需要 Docker、运行时依赖或 API Key。安装后可接入 Claude Code、Codex CLI、Gemini CLI、Aider、Zed、OpenCode、VS Code 等多种 coding agent。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;AI习语视角下，这个项目的重点不是“又一个炫技工具”，而是一个工作流变化：面对中大型代码库时，不要一上来让 AI 读文件、改代码、生成方案。更稳的方式是先让 AI 建立代码地图，再让它解释路径、判断影响面，最后才动手修改。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;你可以直接套用这个提示词模式：第一步，请先索引当前项目，不要修改代码，完成后总结主要模块、入口、核心数据流、关键依赖和潜在风险点。第二步，针对我要修改的目标，请查询相关函数、类、调用链、路由、配置和测试文件，并说明相关原因，按影响优先级排序。第三步，在给出修改方案前，请列出最小改动范围、可能破坏的行为、需要验证的测试，以及如果信息不足还需要查询什么。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这套方法的核心，是把 AI 从“临时阅读者”变成“有项目记忆的协作者”。你不是让它凭上下文窗口硬扛，而是让它先拥有一张代码地图。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;但也要注意安全边界。原文明确说明：这个工具会读取你的代码库，并写入 agent 配置文件。项目称所有处理 100% 在本地完成，代码不会离开你的机器，发布二进制文件有签名、校验和，并经过 70 多个杀毒引擎扫描。即便如此，在公司代码库或敏感项目中，安装前仍建议先阅读安装脚本。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;今天的英文学习动作：把 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;knowledge graph&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;structural query&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;call chain&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;impact analysis&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;dead code detection&lt;/code&gt; 加入你的 AI 编程词库。下次读英文技术项目时，不只看功能，还要看它在解决哪一种上下文效率问题。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;来源：GitHub Trending Daily。原文：DeusData/codebase-memory-mcp。链接：https://github.com/DeusData/codebase-memory-mcp&lt;/p&gt;&lt;blockquote style=&quot;margin:20px 0 0;padding:12px 14px;border-left:3px solid rgb(60,112,198);background:rgba(27,31,35,0.04);color:#666;font-size:14px;line-height:1.8em;letter-spacing:0.02em;&quot;&gt;我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。&lt;/blockquote&gt;&lt;/section&gt;</textarea>
+        </section>
+        <section class="panel">
+          <p class="panel-title">中文草稿</p>
+          <pre>今天这条 GitHub Trending 很适合提醒我们：AI 编程的瓶颈，越来越不是“模型会不会写代码”，而是“它能不能低成本理解你的代码库”。
+
+今天选中的是 GitHub 项目 **DeusData/codebase-memory-mcp**。它的定位很直接：一个面向 AI coding agents 的高性能代码智能 MCP 服务器。它会把代码库索引成一个持久化的知识图谱（persistent knowledge graph），让 AI 不再一遍遍 `grep`、读文件、猜结构，而是先查询“函数、类、调用链、HTTP 路由、跨服务链接”等结构化信息。
+
+从原文给出的数字看，它主打三个关键词：快、省、本地。普通仓库可在毫秒级完成索引；Linux kernel 这种 2800 万行代码、7.5 万个文件的超大仓库，约 3 分钟完成索引；结构查询低于 1ms。项目称，相比逐文件探索，结构化查询可以减少大量 token，在评测中达到 10 倍更少 token、2.1 倍更少工具调用，并给出 83% 的回答质量。
+
+它的技术路线也值得读者记住几个英文表达：`MCP server`、`tree-sitter AST analysis`、`Hybrid LSP semantic type resolution`、`persistent knowledge graph`、`structural queries`。这些词其实代表了 AI 编程工具正在发生的一件事：上下文不再只是“塞更多文件进窗口”，而是把代码库变成可检索、可推理、可复用的结构化记忆。
+
+项目支持 158 种语言，通过 tree-sitter 做语法树解析，并对 Python、TypeScript / JavaScript / JSX / TSX、PHP、C#、Go、C、C++、Java、Kotlin、Rust 等语言加入 LSP 语义类型解析。它提供 14 个 MCP 工具，覆盖搜索、调用链追踪、架构分析、影响分析、Cypher 查询、死代码检测、跨服务 HTTP 链接、ADR 管理等场景。它还提供单个静态二进制文件，支持 macOS、Linux、Windows，零依赖，不需要 Docker、运行时依赖或 API Key。
+
+AI习语视角下，这个项目的重点不是“又一个炫技工具”，而是一个工作流变化：面对中大型代码库时，不要一上来让 AI 读文件、改代码、生成方案。更稳的方式是先让 AI 建立代码地图，再让它解释路径、判断影响面，最后才动手修改。
+
+你可以把它转成一个通用提示词模式：
+
+**代码库理解三步提示词**
+
+第一步，让 AI 建图：请先索引当前项目，不要修改代码。完成后总结项目的主要模块、入口、核心数据流、关键依赖和潜在风险点。
+
+第二步，让 AI 查路径：针对我要修改的目标，请先查询相关函数、类、调用链、路由、配置和测试文件。请说明这些文件为什么相关，并按影响优先级排序。
+
+第三步，让 AI 再动手：在给出修改方案前，请列出最小改动范围、可能破坏的行为、需要验证的测试，以及如果信息不足你还需要查询什么。
+
+如果你使用的是 Claude Code、Codex CLI、Gemini CLI、Aider、Zed、OpenCode、VS Code 等支持 MCP 或相关配置的工具，这类“代码库记忆层”会越来越重要。它本质上是在帮 AI 从“临时阅读者”变成“有项目记忆的协作者”。
+
+但也要注意安全边界。原文明确说明：这个工具会读取你的代码库，并写入 agent 配置文件。项目称所有处理 100% 在本地完成，代码不会离开你的机器，发布二进制文件有签名、校验和，并经过 70 多个杀毒引擎扫描。即便如此，安装前仍建议先阅读安装脚本，尤其是在公司代码库或敏感项目中。
+
+今天的英文学习动作也很简单：把 `knowledge graph`、`structural query`、`call chain`、`impact analysis`、`dead code detection` 这五个词加入你的 AI 编程词库。下次读英文技术项目时，不只看“功能”，还要看它在解决哪一种上下文效率问题。
+
+来源：GitHub Trending Daily
+
+原文：DeusData/codebase-memory-mcp
+
+链接：https://github.com/DeusData/codebase-memory-mcp</pre>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script>
+    document.getElementById("copyHtml").addEventListener("click", async () => {
+      const value = document.getElementById("htmlSource").value;
+      await navigator.clipboard.writeText(value);
+      const button = document.getElementById("copyHtml");
+      button.textContent = "已复制";
+      setTimeout(() => button.textContent = "复制公众号 HTML", 1800);
+    });
+  </script>
+</body>
+</html>
