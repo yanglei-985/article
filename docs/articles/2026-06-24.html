@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI习语日报 - 2026-06-24</title>
+  <style>
+    :root { color-scheme: light; --blue:#3c70c6; --ink:#20242a; --muted:#606975; --line:#dfe5ee; --bg:#f6f8fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+    .shell { max-width: 1100px; margin: 0 auto; padding: 28px 18px 48px; }
+    .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .brand { min-width: 0; }
+    .eyebrow { margin: 0 0 4px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 38px); line-height: 1.12; letter-spacing: 0; }
+    .meta { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    button, a.button { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 18px; align-items: start; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .panel-title { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .wechat-preview { padding: 18px 12px; background: #fff; }
+    .side { display: grid; gap: 18px; }
+    .box { padding: 16px; }
+    .box p { margin: 0 0 10px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .box code { word-break: break-all; color: var(--blue); }
+    textarea { width: 100%; height: 360px; border: 0; border-top: 1px solid var(--line); padding: 14px; resize: vertical; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: #334; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0; padding: 14px; font-size: 13px; line-height: 1.6; color: #394150; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .topbar { align-items: flex-start; flex-direction: column; } .actions { justify-content: flex-start; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div class="brand">
+        <p class="eyebrow">AI习语 · 2026-06-24</p>
+        <h1>calesthio/OpenMontage</h1>
+        <p class="meta">来源：GitHub Trending Daily · 生成模式：AI 精翻 + 排版</p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="copyHtml">复制公众号 HTML</button>
+        <a class="button" href="2026-06-24.wechat.html">打开纯 HTML</a>
+        <a class="button" href="../submit.html">投喂链接</a>
+      </div>
+    </section>
+    <section class="layout">
+      <article class="panel">
+        <p class="panel-title">公众号预览</p>
+        <div class="wechat-preview"><section data-role="outer" label="edit by 135editor" style="margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;"><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">如果你一直觉得 AI 只能“帮你写脚本、做几张图”，那 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">OpenMontage</code> 这类项目，正在把上限往前推一大截。它自称是世界上第一个开源的、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">agentic video production system</code>，你只要用自然语言描述想法，AI 代理就会自己完成研究、写脚本、找素材、剪辑、配音、加字幕，最后把成片渲染出来。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">更值得注意的是，它做的不是“拿几张静态图拼成视频”这种简单动画，而是能走一条更像真实制片流程的路径：从免费素材库和开放档案里建立语料，检索真实运动镜头，编排进时间线，再输出完整成片。对 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">AI习语</code> 的读者来说，这不只是一个视频工具，更像一堂关于“如何把一段模糊需求，拆成可执行工作流”的公开课。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">它公开展示了几种不同的生产方式：一条是生成式路线，比如用 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Veo</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Kling v3</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">FLUX</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">gpt-image-1</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">WhisperX</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Remotion</code> 等组合出 trailer、动画短片、产品广告；另一种是检索式路线，从公开视频、素材库、开放档案中寻找真实镜头，再编辑成片。后者尤其重要，因为它提醒我们：AI 视频的关键，不只是“生成”，而是“编排”和“取材”。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">如果你把 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">OpenMontage</code> 只理解成“一个做视频的项目”，就低估它了。它最值得借鉴的是一种提示词思维：不要一上来就要求“给我一个完整作品”，而是先让系统建立生产计划，再逐步推进。这和很多人用 AI 的方式正好相反。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">以后不管你是用 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Claude Code</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Cursor</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Copilot</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Windsurf</code>，还是别的 AI 编程助手，都可以试试这个结构：先定义目标，再定义参考，再定义约束，最后才进入生成。你得到的不再是“prompt spaghetti”，而是一个能落地的制作计划。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">对学英文的人来说，这类项目还很适合做英文输入训练。建议你顺手积累这些高频表达：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">agentic workflow</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">production pipeline</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">reference video</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">asset generation</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">timeline composition</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">motion clips</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">cost estimate</code>。这些不是考试词，而是你和 AI 对话时真正有用的工作词汇。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">今天就可以做一个小练习：挑一个你喜欢的英文短视频，先让 AI 分析它的开头钩子、节奏、场景切换和表达方式；再要求它给出 3 个不同方向的方案、工具链和成本估算；最后补一句“请给我一个可试的小样脚本”。这套动作的意义，不只是在做视频，而是在训练你把“灵感”翻译成“任务”，再把“任务”翻译成“工作流”。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">OpenMontage 这类项目真正提醒我们的，是 AI 不只是内容生成器，它也可以是流程组织器。谁能把需求说清楚、把步骤拆清楚、把约束列清楚，谁就更容易让 AI 变成生产力。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">来源：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">GitHub Trending Daily</code>；项目：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">calesthio/OpenMontage</code>；链接：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">https://github.com/calesthio/OpenMontage</code></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">&gt; 我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</p></section></div>
+      </article>
+      <aside class="side">
+        <section class="panel box">
+          <p class="panel-title" style="margin:-16px -16px 14px;">原文信息</p>
+          <p><strong>Score:</strong> 15</p>
+          <p><strong>URL:</strong> <a href="https://github.com/calesthio/OpenMontage">https://github.com/calesthio/OpenMontage</a></p>
+          <p><strong>摘要:</strong> World&#39;s first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio. OpenMontage The first open-source, agentic video production system. Paste A Video &amp;nbsp;·&amp;nbsp; Quick Start &amp;nbsp;·&amp;nbsp; Try These Prompts &amp;nbsp;·&amp;nbsp; Pipelines &amp;nbsp;·&amp;nbsp; How It Works &amp;nbsp;·&amp;nbsp; Providers &amp;nbsp;·&amp;nbsp; Agent Guide Follow The Build Turn your AI coding assistant into a full video production studio. Describe what you want in plain language — your agent handles research, scripting, asset generation, editing, and final composition. Important distinction: OpenMontage can make image-based videos, but it can also make a real video video for free/open-source workflows: the agent builds a corpus from free stock footage and open archives, retrieves actual motion clips, edits them into a timeline, and renders a finished piece. That is not the usual &quot;animate a handful of stills and call it video&quot; trick. &quot;SIGNAL FROM TOMORROW&quot; — a cinematic sci-fi trailer fully produced through OpenMontage: concept, script, scene plan, Veo-generated motion clips, soundtrack, and Remotion composition. &quot;THE LAST BANANA&quot; </p>
+        </section>
+        <section class="panel">
+          <p class="panel-title">复制区</p>
+          <textarea id="htmlSource" spellcheck="false">&lt;section data-role=&quot;outer&quot; label=&quot;edit by 135editor&quot; style=&quot;margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;&quot;&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;如果你一直觉得 AI 只能“帮你写脚本、做几张图”，那 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;OpenMontage&lt;/code&gt; 这类项目，正在把上限往前推一大截。它自称是世界上第一个开源的、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;agentic video production system&lt;/code&gt;，你只要用自然语言描述想法，AI 代理就会自己完成研究、写脚本、找素材、剪辑、配音、加字幕，最后把成片渲染出来。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;更值得注意的是，它做的不是“拿几张静态图拼成视频”这种简单动画，而是能走一条更像真实制片流程的路径：从免费素材库和开放档案里建立语料，检索真实运动镜头，编排进时间线，再输出完整成片。对 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;AI习语&lt;/code&gt; 的读者来说，这不只是一个视频工具，更像一堂关于“如何把一段模糊需求，拆成可执行工作流”的公开课。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;它公开展示了几种不同的生产方式：一条是生成式路线，比如用 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Veo&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Kling v3&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;FLUX&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;gpt-image-1&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;WhisperX&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Remotion&lt;/code&gt; 等组合出 trailer、动画短片、产品广告；另一种是检索式路线，从公开视频、素材库、开放档案中寻找真实镜头，再编辑成片。后者尤其重要，因为它提醒我们：AI 视频的关键，不只是“生成”，而是“编排”和“取材”。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;如果你把 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;OpenMontage&lt;/code&gt; 只理解成“一个做视频的项目”，就低估它了。它最值得借鉴的是一种提示词思维：不要一上来就要求“给我一个完整作品”，而是先让系统建立生产计划，再逐步推进。这和很多人用 AI 的方式正好相反。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;以后不管你是用 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Claude Code&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Cursor&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Copilot&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Windsurf&lt;/code&gt;，还是别的 AI 编程助手，都可以试试这个结构：先定义目标，再定义参考，再定义约束，最后才进入生成。你得到的不再是“prompt spaghetti”，而是一个能落地的制作计划。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;对学英文的人来说，这类项目还很适合做英文输入训练。建议你顺手积累这些高频表达：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;agentic workflow&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;production pipeline&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;reference video&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;asset generation&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;timeline composition&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;motion clips&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;cost estimate&lt;/code&gt;。这些不是考试词，而是你和 AI 对话时真正有用的工作词汇。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;今天就可以做一个小练习：挑一个你喜欢的英文短视频，先让 AI 分析它的开头钩子、节奏、场景切换和表达方式；再要求它给出 3 个不同方向的方案、工具链和成本估算；最后补一句“请给我一个可试的小样脚本”。这套动作的意义，不只是在做视频，而是在训练你把“灵感”翻译成“任务”，再把“任务”翻译成“工作流”。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;OpenMontage 这类项目真正提醒我们的，是 AI 不只是内容生成器，它也可以是流程组织器。谁能把需求说清楚、把步骤拆清楚、把约束列清楚，谁就更容易让 AI 变成生产力。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;来源：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;GitHub Trending Daily&lt;/code&gt;；项目：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;calesthio/OpenMontage&lt;/code&gt;；链接：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;https://github.com/calesthio/OpenMontage&lt;/code&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;&amp;gt; 我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。&lt;/p&gt;&lt;/section&gt;</textarea>
+        </section>
+        <section class="panel">
+          <p class="panel-title">中文草稿</p>
+          <pre># OpenMontage：把 AI 编程助手，变成一间“会自己做视频”的工作室
+
+如果你一直觉得 AI 只能“帮你写脚本、做几张图”，那 OpenMontage 这类项目，正在把上限往前推一大截。它自称是世界上第一个开源的、agentic video production system（智能体式视频生产系统）：你只要用自然语言描述想法，AI 代理就会自己完成研究、写脚本、找素材、剪辑、配音、加字幕，最后把成片渲染出来。
+
+更值得注意的是，它做的不是“拿几张静态图拼成视频”这种简单动画，而是能走一条更像真实制片流程的路径：从免费素材库和开放档案里建立语料，检索真实运动镜头，编排进时间线，再输出完整成片。对 AI 习语的读者来说，这不只是一个视频工具，更像一堂关于“如何把一段模糊需求，拆成可执行工作流”的公开课。
+
+---
+
+## 它到底厉害在哪
+
+OpenMontage 目前公开的信息里，最吸引人的不是某个单点模型，而是它把整条视频生产链条串起来了：12 条 pipeline、52 个工具、500+ 个 agent skills（智能体技能）。也就是说，它不是让你自己东拼西凑工具，而是把“从想法到成片”的中间步骤尽量自动化。
+
+它展示了几种不同的生产方式：一种是生成式路线，比如用 Veo、Kling v3、FLUX、gpt-image-1、WhisperX、Remotion 等组合出 trailer、动画短片、产品广告；另一种是检索式路线，从公开视频、素材库、开放档案中寻找真实镜头，再编辑成片。后者尤其重要，因为它提醒我们：AI 视频的关键，不只是“生成”，而是“编排”和“取材”。
+
+---
+
+## 对普通用户真正有用的，不是视频，而是流程
+
+如果你把 OpenMontage 只理解成“一个做视频的项目”，就低估它了。它最值得借鉴的是一种提示词思维：不要一上来就要求“给我一个完整作品”，而是先让系统建立生产计划，再逐步推进。
+
+这和很多人用 AI 的方式正好相反。我们常常直接丢一句“帮我做个短视频”，结果模型只能给你一个空泛答案。更好的方式是：先定义目标，再定义参考，再定义约束，最后才进入生成。OpenMontage 公开展示的能力，本质上就是把这四步标准化了。
+
+---
+
+## 你可以直接复用的提示词模式
+
+以后不管你是用 Claude Code、Cursor、Copilot、Windsurf，还是别的 AI 编程助手，都可以试试这个结构：
+
+**1. 目标**：我想做什么视频，给谁看，想传达什么。
+
+**2. 参考**：给一个你喜欢的 YouTube Short、Reel、TikTok 或本地视频，要求分析节奏、结构、镜头和语气。
+
+**3. 约束**：预算、时长、画风、是否必须用真实素材、是否要英文旁白、是否要字幕。
+
+**4. 输出**：先给 2-3 个差异化方案，再给工具路径、成本估算和一个可试的小样。
+
+你可以直接这样问：
+“这是一个我喜欢的参考视频。请先分析它的开头钩子、节奏、场景切换和表达方式，然后为‘量子计算入门’生成 3 个不同方向的短视频方案。每个方案都说明：保留什么、改变什么、预计成本、推荐工具链、以及最适合的英文旁白风格。”
+
+这个问法的好处是，它逼着 AI 先做分解，再做生成。你得到的不再是“prompt spaghetti（提示词意大利面）”，而是一个能落地的制作计划。
+
+---
+
+## 给学英文的人一个额外收益
+
+OpenMontage 这类项目还有一个常被忽略的价值：它很适合拿来练英文输入和项目阅读。因为它的页面、术语、pipeline、skills、composition、rendering、footage 这些词，都是 AI 产品和创作工作流里高频出现的真实表达。
+
+如果你在学英文，建议不要只翻中文总结，而是顺手积累这几个词组：`agentic workflow`、`production pipeline`、`reference video`、`asset generation`、`timeline composition`、`motion clips`、`cost estimate`。这些不是考试词，而是能直接用于你自己和 AI 对话的工作词汇。
+
+---
+
+## 我建议你今天就做的一个小练习
+
+挑一个你喜欢的英文短视频，按下面三步让 AI 帮你拆：
+
+1. 用英文写一句目标：`Make a short video about ... for ...`。
+2. 加上参考分析：`Analyze pacing, hook, scene changes, and tone.`
+3. 要求输出生产计划：`Give me 3 concepts, tool path, cost estimate, and a sample script.`
+
+这套动作的意义，不只是在做视频，而是在训练你把“灵感”翻译成“任务”，再把“任务”翻译成“工作流”。这正是 AI 时代最值钱的能力之一。
+
+---
+
+## 结尾
+
+OpenMontage 这类项目真正提醒我们的，是 AI 不只是内容生成器，它也可以是流程组织器。谁能把需求说清楚、把步骤拆清楚、把约束列清楚，谁就更容易让 AI 变成生产力。
+
+如果你愿意，可以把这篇文章里的提示词模板，直接改成你自己的视频、播客、英文学习或知识整理任务。
+
+来源：`GitHub Trending Daily`；项目：`calesthio/OpenMontage`；链接：`https://github.com/calesthio/OpenMontage`
+
+&gt; 我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</pre>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script>
+    document.getElementById("copyHtml").addEventListener("click", async () => {
+      const value = document.getElementById("htmlSource").value;
+      await navigator.clipboard.writeText(value);
+      const button = document.getElementById("copyHtml");
+      button.textContent = "已复制";
+      setTimeout(() => button.textContent = "复制公众号 HTML", 1800);
+    });
+  </script>
+</body>
+</html>
