@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI习语日报 - 2026-06-30</title>
+  <style>
+    :root { color-scheme: light; --blue:#3c70c6; --ink:#20242a; --muted:#606975; --line:#dfe5ee; --bg:#f6f8fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+    .shell { max-width: 1100px; margin: 0 auto; padding: 28px 18px 48px; }
+    .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .brand { min-width: 0; }
+    .eyebrow { margin: 0 0 4px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 38px); line-height: 1.12; letter-spacing: 0; }
+    .meta { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    button, a.button { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 18px; align-items: start; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .panel-title { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .wechat-preview { padding: 18px 12px; background: #fff; }
+    .side { display: grid; gap: 18px; }
+    .box { padding: 16px; }
+    .box p { margin: 0 0 10px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .box code { word-break: break-all; color: var(--blue); }
+    textarea { width: 100%; height: 360px; border: 0; border-top: 1px solid var(--line); padding: 14px; resize: vertical; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: #334; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0; padding: 14px; font-size: 13px; line-height: 1.6; color: #394150; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .topbar { align-items: flex-start; flex-direction: column; } .actions { justify-content: flex-start; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div class="brand">
+        <p class="eyebrow">AI习语 · 2026-06-30</p>
+        <h1>simplex-chat/simplex-chat</h1>
+        <p class="meta">来源：GitHub Trending Daily · 生成模式：AI 精翻 + 排版</p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="copyHtml">复制公众号 HTML</button>
+        <a class="button" href="2026-06-30.wechat.html">打开纯 HTML</a>
+        <a class="button" href="../submit.html">投喂链接</a>
+      </div>
+    </section>
+    <section class="layout">
+      <article class="panel">
+        <p class="panel-title">公众号预览</p>
+        <div class="wechat-preview"><section data-role="outer" label="edit by 135editor" style="margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;"><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">不是所有聊天，都该留下可被检索的身份痕迹。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">如果你最近开始认真用 AI，可能会越来越在意一件事：我们把什么信息交给了工具，留下了什么痕迹。今天这篇来自 GitHub Trending 的项目 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">SimpleX Chat</code>，讨论的正是这个问题。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">SimpleX 的核心主张很激进：它是一个不使用任何用户标识符的消息网络。它不仅关注消息内容，还关注 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">metadata</code>——也就是“你和谁说话、什么时候说话”这些常被忽视的信息。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这件事对 AI 用户的启发很直接：很多人做提示词、记笔记、发草稿、传材料时，只盯着内容有没有发出去，却忽略了上下文泄露本身也是一种风险。真正成熟的用法，是学会分层处理信息。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">SimpleX 目前支持 iOS、Android 和桌面端；它还提供 Linux、MacOS、Windows 的终端（<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">CLI</code>）版本。它使用 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">double ratchet</code> 端到端加密，并额外再加一层加密。iOS 还提供 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">TestFlight</code> 预览，通常比正式版早 1 到 2 周，名额限制为 10,000 人。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">对于开发者和极客来说，这类设计很值得看：它不是单纯强调“加密了”，而是在通信结构上尽量减少可识别性。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">如果你常把 AI 当作写作助手、翻译助手或思考伙伴，推荐你建立一个简单的信息分级习惯：公开层、半私密层、私密层。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">你也可以先让 AI 帮你“降敏”再继续分析，直接用这个提示词模板：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">请先把下面内容改写成不含个人身份、公司名称、地点、时间线和具体对象的版本，只保留任务目标、问题类型和可讨论的抽象信息，然后再基于这个脱敏版本给建议。</code></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这个动作不只服务隐私，也服务表达训练。你会被迫把一段具体材料压缩成结构化、无噪音、可复用的中文或英文表达，这本身就是更高阶的提示词写作。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">你可以把“看产品页”变成一个 3 步英文输入训练：第一步抓关键词，比如 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">identifier</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">metadata</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">end-to-end encryption</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">double ratchet</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">TestFlight</code>、<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">CLI</code>。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">第二步，把它们改写成中文解释；第三步，再试着用一句英文复述，比如：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">SimpleX reduces metadata exposure and avoids user identifiers.</code></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">你会发现，这不是单纯的读产品页，而是在做一套“吸收—压缩—复述”的英文输入训练。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">SimpleX 最值得关注的，不只是它多私密，而是它提醒我们：系统设计会影响人的表达方式。一个默认记录身份、关系和历史的平台，会让用户慢慢适应“留痕”；一个尽量减少识别信息的工具，则会逼你更谨慎地组织信息。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">对 AI 时代的普通用户来说，这种谨慎很重要。你不一定要马上换通信工具，但你至少可以从今天开始做两件事：一是把敏感信息分层，二是把复杂输入先改写成可控、可复用的结构。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">来源：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">GitHub Trending Daily</code>，项目页 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">simplex-chat/simplex-chat</code>，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">https://github.com/simplex-chat/simplex-chat</code></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</p></section></div>
+      </article>
+      <aside class="side">
+        <section class="panel box">
+          <p class="panel-title" style="margin:-16px -16px 14px;">原文信息</p>
+          <p><strong>Score:</strong> 13</p>
+          <p><strong>URL:</strong> <a href="https://github.com/simplex-chat/simplex-chat">https://github.com/simplex-chat/simplex-chat</a></p>
+          <p><strong>摘要:</strong> SimpleX - the first messaging network operating without user identifiers of any kind - 100% private by design! iOS, Android and desktop apps 📱! | 30/03/2023 | EN, FR , CZ , PL | SimpleX - the first messaging platform that has no user identifiers of any kind - 100% private by design! &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; Why we are building SimpleX Network Welcome to SimpleX Chat! 📲 Install the app . ↔️ Connect to the team , join user groups and follow our updates . 🤝 Make a private connection with a friend. 🔤 Help translating SimpleX Chat . ⚡️ Contribute and support us with donations . Learn more about SimpleX Chat . Install the app &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 🖲 Protects your messages and metadata - who you talk to and when. 🔐 Double ratchet end-to-end encryption, with additional encryption layer. 📱 Mobile apps for Android ( Google Play , APK ) and iOS . 🚀 TestFlight preview for iOS with the new features 1-2 weeks earlier - limited to 10,000 users ! 🖥 Available as a terminal (console) app / CLI on Linux, MacOS, Windows. Connect to the team You can connect to the team via the app using &quot;chat with the developers button&quot; available when you have no conversat</p>
+        </section>
+        <section class="panel">
+          <p class="panel-title">复制区</p>
+          <textarea id="htmlSource" spellcheck="false">&lt;section data-role=&quot;outer&quot; label=&quot;edit by 135editor&quot; style=&quot;margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;&quot;&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;不是所有聊天，都该留下可被检索的身份痕迹。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;如果你最近开始认真用 AI，可能会越来越在意一件事：我们把什么信息交给了工具，留下了什么痕迹。今天这篇来自 GitHub Trending 的项目 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;SimpleX Chat&lt;/code&gt;，讨论的正是这个问题。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;SimpleX 的核心主张很激进：它是一个不使用任何用户标识符的消息网络。它不仅关注消息内容，还关注 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;metadata&lt;/code&gt;——也就是“你和谁说话、什么时候说话”这些常被忽视的信息。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这件事对 AI 用户的启发很直接：很多人做提示词、记笔记、发草稿、传材料时，只盯着内容有没有发出去，却忽略了上下文泄露本身也是一种风险。真正成熟的用法，是学会分层处理信息。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;SimpleX 目前支持 iOS、Android 和桌面端；它还提供 Linux、MacOS、Windows 的终端（&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;CLI&lt;/code&gt;）版本。它使用 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;double ratchet&lt;/code&gt; 端到端加密，并额外再加一层加密。iOS 还提供 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;TestFlight&lt;/code&gt; 预览，通常比正式版早 1 到 2 周，名额限制为 10,000 人。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;对于开发者和极客来说，这类设计很值得看：它不是单纯强调“加密了”，而是在通信结构上尽量减少可识别性。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;如果你常把 AI 当作写作助手、翻译助手或思考伙伴，推荐你建立一个简单的信息分级习惯：公开层、半私密层、私密层。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;你也可以先让 AI 帮你“降敏”再继续分析，直接用这个提示词模板：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;请先把下面内容改写成不含个人身份、公司名称、地点、时间线和具体对象的版本，只保留任务目标、问题类型和可讨论的抽象信息，然后再基于这个脱敏版本给建议。&lt;/code&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这个动作不只服务隐私，也服务表达训练。你会被迫把一段具体材料压缩成结构化、无噪音、可复用的中文或英文表达，这本身就是更高阶的提示词写作。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;你可以把“看产品页”变成一个 3 步英文输入训练：第一步抓关键词，比如 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;identifier&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;metadata&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;end-to-end encryption&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;double ratchet&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;TestFlight&lt;/code&gt;、&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;CLI&lt;/code&gt;。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;第二步，把它们改写成中文解释；第三步，再试着用一句英文复述，比如：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;SimpleX reduces metadata exposure and avoids user identifiers.&lt;/code&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;你会发现，这不是单纯的读产品页，而是在做一套“吸收—压缩—复述”的英文输入训练。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;SimpleX 最值得关注的，不只是它多私密，而是它提醒我们：系统设计会影响人的表达方式。一个默认记录身份、关系和历史的平台，会让用户慢慢适应“留痕”；一个尽量减少识别信息的工具，则会逼你更谨慎地组织信息。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;对 AI 时代的普通用户来说，这种谨慎很重要。你不一定要马上换通信工具，但你至少可以从今天开始做两件事：一是把敏感信息分层，二是把复杂输入先改写成可控、可复用的结构。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;来源：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;GitHub Trending Daily&lt;/code&gt;，项目页 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;simplex-chat/simplex-chat&lt;/code&gt;，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;https://github.com/simplex-chat/simplex-chat&lt;/code&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。&lt;/p&gt;&lt;/section&gt;</textarea>
+        </section>
+        <section class="panel">
+          <p class="panel-title">中文草稿</p>
+          <pre># 不是所有聊天，都该留下可被检索的身份痕迹
+
+如果你最近开始认真用 AI，可能会越来越在意一件事：我们把什么信息交给了工具，留下了什么痕迹。今天这篇来自 GitHub Trending 的项目 **SimpleX Chat**，讨论的正是这个问题。
+
+SimpleX 的核心主张很激进：它是一个“**不使用任何用户标识符**”的消息网络。换句话说，它不是先给你一个固定账号，再围绕账号建立关系；而是尽量减少平台知道“你是谁”“你和谁联系”“你什么时候联系”的能力。项目页面明确写着，它默认要保护的不只是消息内容，还包括元数据（metadata）——也就是“你和谁说话、什么时候说话”这些常常被忽视的信息。
+
+这件事对 AI 习惯的启发很直接：很多人做提示词、记笔记、发草稿、传材料时，只盯着“内容有没有发出去”，却忽略了“上下文泄露”本身也是一种风险。真正成熟的使用方式，不是把一切都交给一个系统，而是学会分层处理信息。
+
+SimpleX 目前支持 iOS、Android 和桌面端；它还提供 Linux、MacOS、Windows 的终端（CLI）版本。它使用 **double ratchet** 端到端加密，并额外再加一层加密。iOS 还提供 **TestFlight** 预览，通常比正式版早 1 到 2 周，名额限制为 10,000 人。对于开发者和极客来说，这类设计很值得看：它不是单纯强调“加密了”，而是在通信结构上尽量减少可识别性。
+
+## 这对 AI 用户有什么用
+
+如果你常把 AI 当作写作助手、翻译助手或思考伙伴，推荐你建立一个简单的“信息分级”习惯：
+
+1. **公开层**：可以直接给模型的信息，比如通用问题、公开资料、无敏感细节的写作需求。  
+2. **半私密层**：需要改写、脱敏后再喂给模型的信息，比如内部项目、客户邮件、学习笔记。  
+3. **私密层**：不直接输入任何云端模型的内容，只保留在本地、离线工具，或先做彻底抽象。
+
+你可以把这个动作做成一个固定提示词模板，先让 AI 帮你“降敏”再继续分析：
+
+`请先把下面内容改写成不含个人身份、公司名称、地点、时间线和具体对象的版本，只保留任务目标、问题类型和可讨论的抽象信息，然后再基于这个脱敏版本给建议。`
+
+这个模板的价值不只在隐私，也在表达训练。因为你会被迫学会把一段具体材料，压缩成结构化、无噪音、可复用的英文或中文表达。这个过程，本质上就是一种更高阶的提示词写作。
+
+## 一个适合今天就用的小工作流
+
+你可以把“看产品页”变成一个 3 步英文输入训练：
+
+**第一步：抓关键词。** 先只记这几个词：`identifier`、`metadata`、`end-to-end encryption`、`double ratchet`、`TestFlight`、`CLI`。遇到不熟的词，先别急着翻完整段，先判断它在句子里承担什么角色。
+
+**第二步：改写成中文解释。** 例如：`metadata` 不要只翻成“元数据”，还要补一句“指通信关系和时间信息”。`identifier` 可以理解成“用户身份标识”。这样你不是在背词，而是在建立概念。
+
+**第三步：反向输出一句英文。** 看完后，试着用自己的英文复述：
+`SimpleX reduces metadata exposure and avoids user identifiers.`
+这一步特别适合做英文输入训练：你先吸收，再压缩，再复述，最后形成自己的表达库存。
+
+## 我们真正该学的，不只是“更私密”
+
+SimpleX 最值得关注的，不只是它多私密，而是它提醒我们：系统设计会影响人的表达方式。一个默认记录身份、关系和历史的平台，会让用户慢慢适应“留痕”；而一个尽量减少识别信息的工具，则会逼你更谨慎地组织信息。
+
+对 AI 时代的普通用户来说，这种谨慎非常重要。你不一定要马上换通信工具，但你至少可以从今天开始做两件事：一是把敏感信息分层，二是把复杂输入先改写成可控、可复用的结构。
+
+来源：GitHub Trending Daily，项目页 `simplex-chat/simplex-chat`，`https://github.com/simplex-chat/simplex-chat`
+
+&gt; 我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</pre>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script>
+    document.getElementById("copyHtml").addEventListener("click", async () => {
+      const value = document.getElementById("htmlSource").value;
+      await navigator.clipboard.writeText(value);
+      const button = document.getElementById("copyHtml");
+      button.textContent = "已复制";
+      setTimeout(() => button.textContent = "复制公众号 HTML", 1800);
+    });
+  </script>
+</body>
+</html>
