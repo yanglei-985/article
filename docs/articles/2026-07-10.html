@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI习语日报 - 2026-07-10</title>
+  <style>
+    :root { color-scheme: light; --blue:#3c70c6; --ink:#20242a; --muted:#606975; --line:#dfe5ee; --bg:#f6f8fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+    .shell { max-width: 1100px; margin: 0 auto; padding: 28px 18px 48px; }
+    .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .brand { min-width: 0; }
+    .eyebrow { margin: 0 0 4px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 38px); line-height: 1.12; letter-spacing: 0; }
+    .meta { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    button, a.button { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 14px; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 18px; align-items: start; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .panel-title { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .wechat-preview { padding: 18px 12px; background: #fff; }
+    .side { display: grid; gap: 18px; }
+    .box { padding: 16px; }
+    .box p { margin: 0 0 10px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .box code { word-break: break-all; color: var(--blue); }
+    textarea { width: 100%; height: 360px; border: 0; border-top: 1px solid var(--line); padding: 14px; resize: vertical; font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; color: #334; }
+    pre { white-space: pre-wrap; word-break: break-word; margin: 0; padding: 14px; font-size: 13px; line-height: 1.6; color: #394150; }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .topbar { align-items: flex-start; flex-direction: column; } .actions { justify-content: flex-start; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div class="brand">
+        <p class="eyebrow">AI习语 · 2026-07-10</p>
+        <h1>addyosmani/agent-skills</h1>
+        <p class="meta">来源：GitHub Trending Daily · 生成模式：AI 精翻 + 排版</p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="copyHtml">复制公众号 HTML</button>
+        <a class="button" href="2026-07-10.wechat.html">打开纯 HTML</a>
+        <a class="button" href="../submit.html">投喂链接</a>
+      </div>
+    </section>
+    <section class="layout">
+      <article class="panel">
+        <p class="panel-title">公众号预览</p>
+        <div class="wechat-preview"><section data-role="outer" label="edit by 135editor" style="margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;"><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">今天这条 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">GitHub Trending Daily</code>，不是一个普通提示词仓库，而是一套给 AI 编程代理使用的“工程习惯包”。它提醒我们：真正让 AI 变强的，往往不是一句神奇咒语，而是把高手的工作流固化成可重复执行的步骤。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这个项目叫 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">addyosmani/agent-skills</code>，作者把它定义为 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Production-grade engineering skills for AI coding agents</code>，也就是“面向生产级 AI 编程代理的工程技能”。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">它的核心思想很简单：高级工程师写软件时，不只是写代码。他们会先澄清需求、拆解任务、逐步实现、写测试、做代码审查、检查性能，最后再发布。这个仓库把这些流程、质量门槛和最佳实践，打包成 AI Agent 可以稳定遵循的 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">skills</code>。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">换句话说，它不是让 AI “更会聊天”，而是让 AI 在开发全流程里更像一个有纪律的工程搭档。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">仓库里最值得借鉴的是 8 个 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">slash commands</code>，它们对应软件开发的完整生命周期：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/spec</code> 定义要做什么，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/plan</code> 规划怎么做，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/build</code> 增量构建，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/test</code> 证明它能工作，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/review</code> 合并前审查，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/webperf</code> 审计网页性能，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/code-simplify</code> 简化代码，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">/ship</code> 发布到生产环境。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">它背后的原则更重要：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Spec before code</code>，先规格，后代码；<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Small, atomic tasks</code>，任务要小而原子；<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Tests are proof</code>，测试就是证据；<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Measure before you optimize</code>，优化前先测量；<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Clarity over cleverness</code>，清晰胜过炫技。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这套顺序同样适用于写文章、做课程、搭建知识库、准备英文演讲，甚至训练自己的 AI 提示词。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">如果你经常觉得 AI 输出“看起来很努力，但不够靠谱”，可以直接借用这个项目的六步工作流：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Define → Plan → Build → Verify → Review → Ship</code>。对应中文就是：定义目标、拆解计划、逐步生成、验证结果、审查质量、交付发布。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">可直接复制这个提示词模式：你现在不是直接给答案，而是按一个生产级工作流协助我完成任务。任务是【填写任务】，使用场景是【填写场景】，成功标准是【填写标准】。请依次执行 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Define</code> 澄清目标、边界和风险，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Plan</code> 拆成小而独立的步骤，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Build</code> 一次完成一个切片，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Verify</code> 说明验证方法，<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Review</code> 从质量和用户价值角度审查，最后 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Ship</code> 给出可直接使用的版本。如果信息不足，请一次只问我一个最关键的问题。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">这个模板的关键，是阻止 AI 直接进入“生成答案”模式。你是在要求它先建立规格，再进入执行。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">很多提示词的问题，是它只表达愿望：帮我写得更好、帮我分析一下、帮我优化一下。但高级提示词更像流程：先问什么，后做什么；每一步的输出是什么；怎样判断完成；哪里需要暂停确认。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">比如写英文邮件时，不要只说“帮我润色”，可以改成：先判断语气是否适合收件人，再检查表达是否自然，再压缩冗余句子，最后给出英文版本和中文修改说明。这就是把“润色”变成了一个可执行的 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">skill</code>。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">今天的英文学习动作：选 3 个表达改写到自己的工作场景里。比如把 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Spec before code</code> 改成 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Outline before writing</code>，写作前先列大纲；把 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Measure before you optimize</code> 改成 <code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">Diagnose before you rewrite</code>，重写前先诊断。</p><p><br></p><hr style="margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;"><p><br></p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;"><code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">addyosmani/agent-skills</code> 值得关注，不是因为它提供了某个神奇命令，而是因为它把“资深工程师如何控制质量”翻译成了 AI Agent 能执行的结构。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">未来我们使用 AI 的差距，很可能不在于谁知道更多工具，而在于谁更会把自己的工作方法编码成流程、检查表和可复用提示词。</p><p style="text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;">来源：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">GitHub Trending Daily</code><br>项目：<code style="color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;">addyosmani/agent-skills</code><br>链接：https://github.com/addyosmani/agent-skills</p><blockquote style="margin:18px 0 0;padding:12px 14px;border-left:3px solid rgb(60,112,198);background:rgba(27,31,35,0.04);color:#666;font-size:14px;line-height:1.8em;">我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。</blockquote></section></div>
+      </article>
+      <aside class="side">
+        <section class="panel box">
+          <p class="panel-title" style="margin:-16px -16px 14px;">原文信息</p>
+          <p><strong>Score:</strong> 15</p>
+          <p><strong>URL:</strong> <a href="https://github.com/addyosmani/agent-skills">https://github.com/addyosmani/agent-skills</a></p>
+          <p><strong>摘要:</strong> Production-grade engineering skills for AI coding agents. Agent Skills Production-grade engineering skills for AI coding agents. Skills encode the workflows, quality gates, and best practices that senior engineers use when building software. These ones are packaged so AI agents follow them consistently across every phase of development. DEFINE PLAN BUILD VERIFY REVIEW SHIP ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ │ Idea │ ───▶ │ Spec │ ───▶ │ Code │ ───▶ │ Test │ ───▶ │ QA │ ───▶ │ Go │ │Refine│ │ PRD │ │ Impl │ │Debug │ │ Gate │ │ Live │ └──────┘ └──────┘ └──────┘ └──────┘ └──────┘ └──────┘ /spec /plan /build /test /review /ship Commands 8 slash commands that map to the development lifecycle. Each one activates the right skills automatically. What you&#39;re doing Command Key principle Define what to build /spec Spec before code Plan how to build it /plan Small, atomic tasks Build incrementally /build One slice at a time Prove it works /test Tests are proof Review before merge /review Improve code health Audit web performance /webperf Measure before you optimize Simplify the code /code-simplify Clarity over cleverness Ship to production /ship Faster is safer Want fewer ma</p>
+        </section>
+        <section class="panel">
+          <p class="panel-title">复制区</p>
+          <textarea id="htmlSource" spellcheck="false">&lt;section data-role=&quot;outer&quot; label=&quot;edit by 135editor&quot; style=&quot;margin:0;padding:0 10px;background:none;font-size:16px;color:#000;line-height:1.5em;word-spacing:0;letter-spacing:0;word-break:break-word;overflow-wrap:break-word;text-align:left;box-sizing:border-box;font-family:Optima,PingFangSC-regular,serif;&quot;&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;今天这条 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;GitHub Trending Daily&lt;/code&gt;，不是一个普通提示词仓库，而是一套给 AI 编程代理使用的“工程习惯包”。它提醒我们：真正让 AI 变强的，往往不是一句神奇咒语，而是把高手的工作流固化成可重复执行的步骤。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这个项目叫 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;addyosmani/agent-skills&lt;/code&gt;，作者把它定义为 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Production-grade engineering skills for AI coding agents&lt;/code&gt;，也就是“面向生产级 AI 编程代理的工程技能”。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;它的核心思想很简单：高级工程师写软件时，不只是写代码。他们会先澄清需求、拆解任务、逐步实现、写测试、做代码审查、检查性能，最后再发布。这个仓库把这些流程、质量门槛和最佳实践，打包成 AI Agent 可以稳定遵循的 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;skills&lt;/code&gt;。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;换句话说，它不是让 AI “更会聊天”，而是让 AI 在开发全流程里更像一个有纪律的工程搭档。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;仓库里最值得借鉴的是 8 个 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;slash commands&lt;/code&gt;，它们对应软件开发的完整生命周期：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/spec&lt;/code&gt; 定义要做什么，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/plan&lt;/code&gt; 规划怎么做，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/build&lt;/code&gt; 增量构建，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/test&lt;/code&gt; 证明它能工作，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/review&lt;/code&gt; 合并前审查，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/webperf&lt;/code&gt; 审计网页性能，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/code-simplify&lt;/code&gt; 简化代码，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;/ship&lt;/code&gt; 发布到生产环境。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;它背后的原则更重要：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Spec before code&lt;/code&gt;，先规格，后代码；&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Small, atomic tasks&lt;/code&gt;，任务要小而原子；&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Tests are proof&lt;/code&gt;，测试就是证据；&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Measure before you optimize&lt;/code&gt;，优化前先测量；&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Clarity over cleverness&lt;/code&gt;，清晰胜过炫技。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这套顺序同样适用于写文章、做课程、搭建知识库、准备英文演讲，甚至训练自己的 AI 提示词。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;如果你经常觉得 AI 输出“看起来很努力，但不够靠谱”，可以直接借用这个项目的六步工作流：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Define → Plan → Build → Verify → Review → Ship&lt;/code&gt;。对应中文就是：定义目标、拆解计划、逐步生成、验证结果、审查质量、交付发布。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;可直接复制这个提示词模式：你现在不是直接给答案，而是按一个生产级工作流协助我完成任务。任务是【填写任务】，使用场景是【填写场景】，成功标准是【填写标准】。请依次执行 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Define&lt;/code&gt; 澄清目标、边界和风险，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Plan&lt;/code&gt; 拆成小而独立的步骤，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Build&lt;/code&gt; 一次完成一个切片，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Verify&lt;/code&gt; 说明验证方法，&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Review&lt;/code&gt; 从质量和用户价值角度审查，最后 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Ship&lt;/code&gt; 给出可直接使用的版本。如果信息不足，请一次只问我一个最关键的问题。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;这个模板的关键，是阻止 AI 直接进入“生成答案”模式。你是在要求它先建立规格，再进入执行。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;很多提示词的问题，是它只表达愿望：帮我写得更好、帮我分析一下、帮我优化一下。但高级提示词更像流程：先问什么，后做什么；每一步的输出是什么；怎样判断完成；哪里需要暂停确认。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;比如写英文邮件时，不要只说“帮我润色”，可以改成：先判断语气是否适合收件人，再检查表达是否自然，再压缩冗余句子，最后给出英文版本和中文修改说明。这就是把“润色”变成了一个可执行的 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;skill&lt;/code&gt;。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;今天的英文学习动作：选 3 个表达改写到自己的工作场景里。比如把 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Spec before code&lt;/code&gt; 改成 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Outline before writing&lt;/code&gt;，写作前先列大纲；把 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Measure before you optimize&lt;/code&gt; 改成 &lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;Diagnose before you rewrite&lt;/code&gt;，重写前先诊断。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;margin:10px 0;padding:0;border:none;background:linear-gradient(90deg,rgba(60,112,198,0) 0%,rgba(60,122,198,0.75) 50%,rgba(60,122,198,0) 100%);height:1px;box-sizing:border-box;&quot;&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;addyosmani/agent-skills&lt;/code&gt; 值得关注，不是因为它提供了某个神奇命令，而是因为它把“资深工程师如何控制质量”翻译成了 AI Agent 能执行的结构。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;未来我们使用 AI 的差距，很可能不在于谁知道更多工具，而在于谁更会把自己的工作方法编码成流程、检查表和可复用提示词。&lt;/p&gt;&lt;p style=&quot;text-align:left;color:#4a4a4a;font-size:16px;line-height:1.8em;letter-spacing:0.02em;text-indent:0;margin:0;padding:20px 0 8px;&quot;&gt;来源：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;GitHub Trending Daily&lt;/code&gt;&lt;br&gt;项目：&lt;code style=&quot;color:rgb(60,112,198);font-size:14px;line-height:1.8em;background:rgba(27,31,35,0.05);padding:2px 4px;margin:0 2px;border-radius:4px;font-family:Consolas,Monaco,Menlo,monospace;&quot;&gt;addyosmani/agent-skills&lt;/code&gt;&lt;br&gt;链接：https://github.com/addyosmani/agent-skills&lt;/p&gt;&lt;blockquote style=&quot;margin:18px 0 0;padding:12px 14px;border-left:3px solid rgb(60,112,198);background:rgba(27,31,35,0.04);color:#666;font-size:14px;line-height:1.8em;&quot;&gt;我是杨磊，AI习语作者，长期关注 AI 工具、提示效率、英文输入和思维升级。关注「AI习语」，每天用一篇英文世界的一手内容，训练 AI 能力和语言能力。&lt;/blockquote&gt;&lt;/section&gt;</textarea>
+        </section>
+        <section class="panel">
+          <p class="panel-title">中文草稿</p>
+          <pre>今天这条 GitHub Trending，不是一个普通的提示词仓库，而是一套给 AI 编程代理使用的“工程习惯包”。它提醒我们：真正让 AI 变强的，往往不是一句神奇咒语，而是把高手的工作流固化成可重复执行的步骤。
+
+## 把高级工程师的习惯，打包给 AI Agent
+
+这个项目叫 `addyosmani/agent-skills`，作者把它定义为：Production-grade engineering skills for AI coding agents，也就是“面向生产级 AI 编程代理的工程技能”。
+
+它的核心思想很简单：高级工程师写软件时，不只是写代码。他们会先澄清需求、拆解任务、逐步实现、写测试、做代码审查、检查性能，最后再发布。这个仓库把这些流程、质量门槛和最佳实践，打包成 AI Agent 可以稳定遵循的 `skills`。
+
+换句话说，它不是让 AI “更会聊天”，而是让 AI 在开发全流程里更像一个有纪律的工程搭档。
+
+## 关键不是命令，而是生命周期
+
+仓库里最值得借鉴的是 8 个 slash commands，它们对应软件开发的完整生命周期：
+
+- `/spec`：定义要做什么，原则是 Spec before code，先规格，后代码。
+- `/plan`：规划怎么做，原则是 Small, atomic tasks，把任务拆成小而原子的步骤。
+- `/build`：增量构建，原则是 One slice at a time，一次只完成一个切片。
+- `/test`：证明它能工作，原则是 Tests are proof，测试就是证据。
+- `/review`：合并前审查，目标是改善代码健康度。
+- `/webperf`：审计网页性能，原则是 Measure before you optimize，优化前先测量。
+- `/code-simplify`：简化代码，原则是 Clarity over cleverness，清晰胜过炫技。
+- `/ship`：发布到生产环境，原则是 Faster is safer，更快、更小步地发布通常更安全。
+
+这里最有价值的不是斜杠命令本身，而是它背后的思维顺序：先定义，再计划；先小步构建，再用测试证明；先审查，再发布。
+
+这套顺序同样适用于写文章、做课程、搭建知识库、准备英文演讲，甚至训练自己的 AI 提示词。
+
+## 一个值得抄走的 AI 工作流
+
+如果你经常觉得 AI 输出“看起来很努力，但不够靠谱”，可以直接借用这个项目的工作流，把任何任务改成六步：
+
+`Define → Plan → Build → Verify → Review → Ship`
+
+对应中文就是：定义目标、拆解计划、逐步生成、验证结果、审查质量、交付发布。
+
+你可以把下面这段作为通用提示词模板：
+
+```text
+你现在不是直接给答案，而是按一个生产级工作流协助我完成任务。
+
+任务：{填写你的任务}
+目标读者/使用场景：{填写场景}
+成功标准：{填写什么算做好}
+
+请按以下步骤执行：
+1. Define：先澄清目标、边界、输入输出和潜在风险。
+2. Plan：把任务拆成小而独立的步骤，每一步都有可检查结果。
+3. Build：一次只完成一个切片，不要跳步。
+4. Verify：说明如何验证结果是否正确，包括事实、逻辑、格式或测试方法。
+5. Review：从质量、清晰度、可维护性和用户价值角度审查。
+6. Ship：给出最终可直接使用的版本，并列出后续改进建议。
+
+如果信息不足，请一次只问我一个最关键的问题。
+```
+
+这个模板的关键，是阻止 AI 直接进入“生成答案”模式。你是在要求它先建立规格，再进入执行。
+
+## 对非程序员也有用：把 Prompt 写成流程，而不是愿望
+
+很多提示词的问题，是它只表达愿望：帮我写得更好、帮我分析一下、帮我优化一下。
+
+但高级提示词更像流程：先问什么，后做什么；每一步的输出是什么；怎样判断完成；哪里需要暂停确认。
+
+这也是 `agent-skills` 对普通 AI 用户的启发：不要只给 AI 一个目标，要给它一套质量门槛。比如写英文邮件时，不要只说“帮我润色”，可以改成：
+
+1. 先判断语气是否适合收件人；
+2. 再检查表达是否自然；
+3. 再压缩冗余句子；
+4. 最后给出英文版本和中文修改说明。
+
+这就是把“润色”变成了一个可执行的 skill。
+
+## 顺手学几个高频英文表达
+
+这个项目里的英文很适合积累成 AI 工作流词汇：
+
+- `Spec before code`：先规格，后代码。
+- `Small, atomic tasks`：小而原子的任务。
+- `One slice at a time`：一次完成一个切片。
+- `Tests are proof`：测试就是证明。
+- `Measure before you optimize`：优化前先测量。
+- `Clarity over cleverness`：清晰胜过炫技。
+- `Quality gate`：质量门槛。
+- `Production-grade`：生产级，能用于真实环境的。
+
+今天的英文学习动作：选其中 3 句，改写到你自己的工作场景里。比如把 `Spec before code` 改成 `Outline before writing`，写作前先列大纲；把 `Measure before you optimize` 改成 `Diagnose before you rewrite`，重写前先诊断。
+
+## AI习语的判断
+
+`addyosmani/agent-skills` 值得关注，不是因为它提供了某个神奇命令，而是因为它把“资深工程师如何控制质量”翻译成了 AI Agent 能执行的结构。
+
+未来我们使用 AI 的差距，很可能不在于谁知道更多工具，而在于谁更会把自己的工作方法编码成流程、检查表和可复用提示词。
+
+来源：GitHub Trending Daily  
+项目：`addyosmani/agent-skills`  
+链接：https://github.com/addyosmani/agent-skills</pre>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script>
+    document.getElementById("copyHtml").addEventListener("click", async () => {
+      const value = document.getElementById("htmlSource").value;
+      await navigator.clipboard.writeText(value);
+      const button = document.getElementById("copyHtml");
+      button.textContent = "已复制";
+      setTimeout(() => button.textContent = "复制公众号 HTML", 1800);
+    });
+  </script>
+</body>
+</html>
